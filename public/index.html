@@ -5,19 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SkillSwap Live</title>
 
-    <link rel="icon" href="./favicon.ico">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./assets/images/logo.png?v=3">
 
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <!-- CSS -->
     <link rel="stylesheet" href="./assets/styles/styles.css">
 </head>
 <body>
 
 <header class="header">
     <nav class="navbar">
-        <a href="#" class="logo">SkillSwap Live</a>
+        <a href="#" class="logo">
+            <img class="logo-icon" src="./assets/images/logo.png" alt="SkillSwap Live logo">
+            <span>SkillSwap Live</span>
+        </a>
 
         <ul class="nav-links">
             <li><a href="#about">Nosotros</a></li>
@@ -34,7 +40,9 @@
     <section class="hero">
         <div class="hero-content">
             <span class="tag">Aprende enseñando</span>
+
             <h1>Intercambia conocimientos en tiempo real</h1>
+
             <p>
                 SkillSwap Live conecta personas que desean aprender o enseñar habilidades
                 mediante micro-mentorías, geolocalización y créditos de tiempo.
@@ -48,7 +56,7 @@
 
         <div class="hero-card">
             <h3>Mentor cercano</h3>
-            <p class="mentor-name">José Perez</p>
+            <p class="mentor-name">José Pérez</p>
             <p>React, Angular y JavaScript</p>
             <span>⭐ 4.9 · A 500 m</span>
         </div>
@@ -57,8 +65,9 @@
     <section id="about" class="section">
         <h2>¿Qué es SkillSwap Live?</h2>
         <p>
-            Es una plataforma de aprendizaje colaborativo donde los usuarios pueden enseñar
-            habilidades que dominan y ganar créditos de tiempo para aprender otras.
+            SkillSwap Live es una plataforma de aprendizaje colaborativo donde los usuarios
+            pueden enseñar habilidades que dominan y ganar créditos de tiempo para aprender
+            otras habilidades dentro de la comunidad.
         </p>
     </section>
 
@@ -68,17 +77,26 @@
         <div class="cards">
             <article class="card">
                 <h3>Micro-mentorías</h3>
-                <p>Sesiones cortas para resolver dudas específicas de forma rápida.</p>
+                <p>
+                    Sesiones cortas enfocadas en resolver dudas específicas de manera rápida,
+                    directa y personalizada.
+                </p>
             </article>
 
             <article class="card">
                 <h3>Créditos de tiempo</h3>
-                <p>Enseña 30 minutos y gana 30 minutos para aprender otra habilidad.</p>
+                <p>
+                    Enseña 30 minutos y gana 30 créditos para aprender otra habilidad dentro
+                    de la plataforma.
+                </p>
             </article>
 
             <article class="card">
                 <h3>Geolocalización</h3>
-                <p>Encuentra personas cercanas dispuestas a ayudarte en espacios seguros.</p>
+                <p>
+                    Encuentra personas cercanas dispuestas a ayudarte en universidades,
+                    cafeterías, bibliotecas o coworkings.
+                </p>
             </article>
         </div>
     </section>
@@ -86,20 +104,20 @@
     <section id="segments" class="section">
         <h2>Segmentos objetivo</h2>
 
-        <div class="cards">
+        <div class="cards two-columns">
             <article class="card">
                 <h3>Personas que desean aprender</h3>
                 <p>
                     Estudiantes, profesionales y autodidactas que buscan resolver dudas
-                    puntuales sin depender de cursos largos.
+                    puntuales sin depender de cursos largos o clases tradicionales.
                 </p>
             </article>
 
             <article class="card">
                 <h3>Personas que desean enseñar</h3>
                 <p>
-                    Usuarios con conocimientos en programación, idiomas, diseño, música
-                    u otras habilidades que desean compartir lo que saben.
+                    Usuarios con conocimientos en programación, idiomas, diseño, música u otras
+                    habilidades que desean compartir lo que saben y recibir créditos de tiempo.
                 </p>
             </article>
         </div>
@@ -107,7 +125,9 @@
 
     <section id="contact" class="cta">
         <h2>Aprende algo nuevo hoy</h2>
-        <p>Conecta con personas, comparte tus conocimientos y gana tiempo para seguir aprendiendo.</p>
+        <p>
+            Conecta con personas, comparte tus conocimientos y gana tiempo para seguir aprendiendo.
+        </p>
         <a href="#" class="primary-button">Empezar ahora</a>
     </section>
 </main>
@@ -116,6 +136,7 @@
     <p>© 2026 SkillSwap Live. Todos los derechos reservados.</p>
 </footer>
 
+<!-- JavaScript -->
 <script src="./assets/scripts/main.js"></script>
 </body>
 </html>
