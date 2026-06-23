@@ -3,133 +3,281 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkillSwap Live</title>
+    <meta name="description" content="SkillSwap Live conecta personas para aprender y enseñar habilidades mediante micro-mentorías, créditos de tiempo y mentores cercanos.">
+    <title>SkillSwap Live | Micro-mentorías en tiempo real</title>
 
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="./assets/images/logo.png?v=3">
-
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="./assets/styles/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/styles/styles.css?v=landing-content">
 </head>
 <body>
-
 <header class="header">
-    <nav class="navbar">
-        <a href="#" class="logo">
-            <img class="logo-icon" src="./assets/images/logo.png" alt="SkillSwap Live logo">
+    <nav class="navbar" aria-label="Navegación principal">
+        <a href="#home" class="logo" aria-label="SkillSwap Live inicio">
+            <img class="logo-icon" src="./assets/images/logo.png" alt="Logo de SkillSwap Live">
             <span>SkillSwap Live</span>
         </a>
 
+        <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
         <ul class="nav-links">
-            <li><a href="#about">Nosotros</a></li>
-            <li><a href="#features">Características</a></li>
-            <li><a href="#segments">Segmentos</a></li>
-            <li><a href="#contact">Contacto</a></li>
+            <li><a href="#how-it-works">Cómo funciona</a></li>
+            <li><a href="#discover">Buscar mentores</a></li>
+            <li><a href="#credits">Créditos</a></li>
+            <li><a href="#trust">Confianza</a></li>
+            <li><a href="#community">Comunidad</a></li>
         </ul>
 
-        <a href="#contact" class="nav-button">Únete</a>
+        <a href="#join" class="nav-button">Unirme</a>
     </nav>
 </header>
 
-<main>
+<main id="home">
     <section class="hero">
         <div class="hero-content">
-            <span class="tag">Aprende enseñando</span>
-
-            <h1>Intercambia conocimientos en tiempo real</h1>
-
+            <span class="tag">Aprendizaje colaborativo en minutos</span>
+            <h1>Encuentra a alguien que sabe justo lo que necesitas aprender.</h1>
             <p>
-                SkillSwap Live conecta personas que desean aprender o enseñar habilidades
-                mediante micro-mentorías, geolocalización y créditos de tiempo.
+                SkillSwap Live conecta estudiantes, profesionales y personas autodidactas con mentores
+                cercanos o disponibles en línea para resolver dudas concretas mediante micro-mentorías.
             </p>
 
             <div class="hero-actions">
-                <a href="#features" class="primary-button">Conoce la solución</a>
-                <a href="#segments" class="secondary-button">Ver segmentos</a>
+                <a href="#discover" class="primary-button">Buscar una habilidad</a>
+                <a href="#how-it-works" class="secondary-button">Ver cómo funciona</a>
+            </div>
+
+            <dl class="hero-metrics" aria-label="Indicadores de la plataforma">
+                <div>
+                    <dt>15 min</dt>
+                    <dd>para resolver una duda puntual</dd>
+                </div>
+                <div>
+                    <dt>1:1</dt>
+                    <dd>mentorías directas y personalizadas</dd>
+                </div>
+                <div>
+                    <dt>0 pago</dt>
+                    <dd>intercambio usando créditos de tiempo</dd>
+                </div>
+            </dl>
+        </div>
+
+        <aside class="mentor-panel" aria-label="Vista previa de mentor cercano">
+            <div class="panel-header">
+                <span class="live-dot"></span>
+                Mentor disponible cerca
+            </div>
+            <div class="mentor-card featured">
+                <div class="mentor-avatar">JP</div>
+                <div>
+                    <h2>José Paredes</h2>
+                    <p>Python, Power BI y Figma</p>
+                </div>
+                <span class="mentor-score">4.9</span>
+            </div>
+            <div class="mentor-details">
+                <span>A 500 m</span>
+                <span>Virtual o presencial</span>
+                <span>30 créditos</span>
+            </div>
+            <button class="panel-button" type="button">Solicitar mentoría</button>
+        </aside>
+    </section>
+
+    <section id="how-it-works" class="section">
+        <div class="section-heading">
+            <span class="eyebrow">Flujo principal</span>
+            <h2>De una duda a una mentoría confirmada</h2>
+            <p>
+                El recorrido está pensado para que el usuario no se pierda: busca una habilidad,
+                revisa perfiles confiables, elige horario y confirma la sesión.
+            </p>
+        </div>
+
+        <div class="steps">
+            <article>
+                <span>01</span>
+                <h3>Busca una habilidad</h3>
+                <p>Ingresa temas como Excel, inglés, React, estadística o diseño y compara mentores disponibles.</p>
+            </article>
+            <article>
+                <span>02</span>
+                <h3>Revisa el perfil</h3>
+                <p>Consulta experiencia, calificación, reseñas, modalidad, distancia y créditos requeridos.</p>
+            </article>
+            <article>
+                <span>03</span>
+                <h3>Solicita y coordina</h3>
+                <p>Elige horario, envía una duda previa y recibe confirmación o notificación del mentor.</p>
+            </article>
+            <article>
+                <span>04</span>
+                <h3>Califica la sesión</h3>
+                <p>Al finalizar, confirma la mentoría, actualiza créditos y deja reseña para la comunidad.</p>
+            </article>
+        </div>
+    </section>
+
+    <section id="discover" class="section discovery-section">
+        <div class="section-heading">
+            <span class="eyebrow">Búsqueda y filtros</span>
+            <h2>Encuentra mentores por habilidad, modalidad y confianza</h2>
+            <p>
+                La landing muestra el valor central de la plataforma: resultados claros con datos útiles
+                antes de pedir una mentoría.
+            </p>
+        </div>
+
+        <div class="discovery-grid">
+            <div class="search-demo">
+                <label for="skill-search">¿Qué quieres aprender?</label>
+                <div class="search-box">
+                    <input id="skill-search" type="search" value="Python" aria-label="Buscar habilidad">
+                    <button type="button" class="search-button">Buscar</button>
+                </div>
+
+                <div class="filter-pills" aria-label="Filtros de búsqueda">
+                    <button type="button" class="filter-pill active" data-filter="all">Todos</button>
+                    <button type="button" class="filter-pill" data-filter="nearby">Cercanos</button>
+                    <button type="button" class="filter-pill" data-filter="online">Virtuales</button>
+                    <button type="button" class="filter-pill" data-filter="top">Mejor calificados</button>
+                </div>
+
+                <div class="mentor-results" aria-live="polite">
+                    <article class="result-card" data-tags="nearby top">
+                        <div class="mentor-avatar teal">GA</div>
+                        <div>
+                            <h3>Grecia Ascarza</h3>
+                            <p>Estadística inferencial</p>
+                            <span>4.8 · Surco · 25 créditos</span>
+                        </div>
+                    </article>
+                    <article class="result-card" data-tags="online top">
+                        <div class="mentor-avatar blue">JA</div>
+                        <div>
+                            <h3>Jhoel Armas</h3>
+                            <p>Python, Power BI y Figma</p>
+                            <span>4.9 · Virtual · 30 créditos</span>
+                        </div>
+                    </article>
+                    <article class="result-card" data-tags="nearby">
+                        <div class="mentor-avatar coral">JC</div>
+                        <div>
+                            <h3>Jeferson Contreras</h3>
+                            <p>Guitarra funcional</p>
+                            <span>4.7 · Campus · 20 créditos</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div class="feature-stack">
+                <article>
+                    <h3>Disponibilidad visible</h3>
+                    <p>Los usuarios pueden elegir fechas y horarios sin coordinar todo desde cero.</p>
+                </article>
+                <article>
+                    <h3>Modalidad flexible</h3>
+                    <p>Cada perfil indica si atiende virtual, presencial o ambas opciones.</p>
+                </article>
+                <article>
+                    <h3>Favoritos y recomendaciones</h3>
+                    <p>La plataforma puede sugerir mentores según intereses y habilidades guardadas.</p>
+                </article>
             </div>
         </div>
+    </section>
 
-        <div class="hero-card">
-            <h3>Mentor cercano</h3>
-            <p class="mentor-name">José Pérez</p>
-            <p>React, Angular y JavaScript</p>
-            <span>⭐ 4.9 · A 500 m</span>
+    <section id="credits" class="section credits-section">
+        <div class="credits-card">
+            <div>
+                <span class="eyebrow">Créditos de tiempo</span>
+                <h2>Enseñas 30 minutos, ganas 30 créditos para aprender después.</h2>
+                <p>
+                    El sistema reemplaza la barrera económica por intercambio justo de tiempo.
+                    Enseñar, aprender y revisar movimientos ocurre desde una sola cuenta.
+                </p>
+            </div>
+
+            <div class="credit-ledger" aria-label="Ejemplo de historial de créditos">
+                <div>
+                    <span>Saldo actual</span>
+                    <strong>85 créditos</strong>
+                </div>
+                <ul>
+                    <li><span>Mentoría de Excel completada</span><strong>+30</strong></li>
+                    <li><span>Sesión de Python solicitada</span><strong>-25</strong></li>
+                    <li><span>Bonificación por uso frecuente</span><strong>+10</strong></li>
+                </ul>
+            </div>
         </div>
     </section>
 
-    <section id="about" class="section">
-        <h2>¿Qué es SkillSwap Live?</h2>
+    <section id="trust" class="section">
+        <div class="section-heading">
+            <span class="eyebrow">Seguridad y reputación</span>
+            <h2>Confianza antes, durante y después de cada encuentro</h2>
+        </div>
+
+        <div class="cards trust-cards">
+            <article class="card">
+                <h3>Perfiles verificables</h3>
+                <p>Foto, habilidades, experiencia, sesiones realizadas y verificación de identidad cuando aplique.</p>
+            </article>
+            <article class="card">
+                <h3>Reseñas y calificaciones</h3>
+                <p>Las opiniones ayudan a elegir mentores confiables y sostienen la reputación de la comunidad.</p>
+            </article>
+            <article class="card">
+                <h3>Control de seguridad</h3>
+                <p>Reportar, bloquear y seleccionar lugares seguros reduce el riesgo en mentorías presenciales.</p>
+            </article>
+        </div>
+    </section>
+
+    <section id="community" class="section community-section">
+        <div class="section-heading">
+            <span class="eyebrow">Comunidad</span>
+            <h2>Una red donde aprender también significa aportar</h2>
+            <p>
+                SkillSwap Live invita a compartir logros, descubrir habilidades populares,
+                invitar amigos y participar en una comunidad que aprende en ciclos cortos.
+            </p>
+        </div>
+
+        <div class="community-grid">
+            <article>
+                <strong>Habilidades populares</strong>
+                <span>Python · Excel · Inglés · Diseño · Guitarra</span>
+            </article>
+            <article>
+                <strong>Logros compartidos</strong>
+                <span>Usuarios muestran avances para motivar a otros a aprender.</span>
+            </article>
+            <article>
+                <strong>Usuarios cercanos</strong>
+                <span>La geolocalización ayuda a activar mentorías en campus, bibliotecas o coworkings.</span>
+            </article>
+        </div>
+    </section>
+
+    <section id="join" class="cta">
+        <span class="eyebrow">Empieza hoy</span>
+        <h2>Convierte lo que sabes en tiempo para aprender algo nuevo.</h2>
         <p>
-            SkillSwap Live es una plataforma de aprendizaje colaborativo donde los usuarios
-            pueden enseñar habilidades que dominan y ganar créditos de tiempo para aprender
-            otras habilidades dentro de la comunidad.
+            Regístrate, agrega tus habilidades, selecciona intereses y encuentra una micro-mentoría cuando la necesites.
         </p>
-    </section>
-
-    <section id="features" class="section">
-        <h2>Características principales</h2>
-
-        <div class="cards">
-            <article class="card">
-                <h3>Micro-mentorías</h3>
-                <p>
-                    Sesiones cortas enfocadas en resolver dudas específicas de manera rápida,
-                    directa y personalizada.
-                </p>
-            </article>
-
-            <article class="card">
-                <h3>Créditos de tiempo</h3>
-                <p>
-                    Enseña 30 minutos y gana 30 créditos para aprender otra habilidad dentro
-                    de la plataforma.
-                </p>
-            </article>
-
-            <article class="card">
-                <h3>Geolocalización</h3>
-                <p>
-                    Encuentra personas cercanas dispuestas a ayudarte en universidades,
-                    cafeterías, bibliotecas o coworkings.
-                </p>
-            </article>
+        <div class="cta-actions">
+            <a href="#discover" class="primary-button">Explorar mentores</a>
+            <a href="#credits" class="secondary-button light">Entender créditos</a>
         </div>
-    </section>
-
-    <section id="segments" class="section">
-        <h2>Segmentos objetivo</h2>
-
-        <div class="cards two-columns">
-            <article class="card">
-                <h3>Personas que desean aprender</h3>
-                <p>
-                    Estudiantes, profesionales y autodidactas que buscan resolver dudas
-                    puntuales sin depender de cursos largos o clases tradicionales.
-                </p>
-            </article>
-
-            <article class="card">
-                <h3>Personas que desean enseñar</h3>
-                <p>
-                    Usuarios con conocimientos en programación, idiomas, diseño, música u otras
-                    habilidades que desean compartir lo que saben y recibir créditos de tiempo.
-                </p>
-            </article>
-        </div>
-    </section>
-
- 
-    <section id="contact" class="cta">
-        <h2>Aprende algo nuevo hoy</h2>
-        <p>
-            Conecta con personas, comparte tus conocimientos y gana tiempo para seguir aprendiendo.
-        </p>
-        <a href="#" class="primary-button">Empezar ahora</a>
     </section>
 </main>
 
@@ -137,7 +285,6 @@
     <p>© 2026 SkillSwap Live. Todos los derechos reservados.</p>
 </footer>
 
-<!-- JavaScript -->
-<script src="./assets/scripts/main.js"></script>
+<script src="./assets/scripts/main.js?v=landing-content"></script>
 </body>
 </html>
