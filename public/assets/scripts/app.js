@@ -64,10 +64,13 @@ const showView = (viewName, updateHistory = true) => {
             button.setAttribute("aria-current", "page");
 
             if (window.matchMedia("(max-width: 920px)").matches) {
-                button.scrollIntoView({
+                const navigation = button.closest(".side-nav");
+                const centeredPosition = button.offsetLeft
+                    - ((navigation?.clientWidth ?? 0) - button.clientWidth) / 2;
+
+                navigation?.scrollTo({
+                    left: Math.max(0, centeredPosition),
                     behavior: "smooth",
-                    block: "nearest",
-                    inline: "center",
                 });
             }
         } else {
