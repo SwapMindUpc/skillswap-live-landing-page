@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="0; url=./public/index.html">
+    <title>Abriendo SkillSwap Live</title>
+</head>
+<body>
+<p>Abriendo <a href="./public/index.html">SkillSwap Live</a>...</p>
+
+<script>
+    const destination = `./public/index.html${window.location.search}${window.location.hash}`;
+    window.location.replace(destination);
+</script>
+</body>
+</html>
