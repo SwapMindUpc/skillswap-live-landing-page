@@ -14,6 +14,10 @@
     --radius: 8px;
     --radius-lg: 18px;
     --container: min(1160px, calc(100% - 40px));
+    --scroll-progress: 0;
+    --rotate-x: 0deg;
+    --rotate-y: 0deg;
+    --reveal-delay: 0ms;
 }
 
 * {
@@ -1360,7 +1364,7 @@ body::before {
 
 @keyframes gradient-shift {
     from {
-        background-position: 0% 50%;
+        background-position: 0 50%;
     }
 
     to {
