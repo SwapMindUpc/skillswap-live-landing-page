@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="description"
+        content="Prototipo de la aplicación SkillSwap Live para gestionar búsquedas, mentorías, créditos y comunidad."
+    >
+    <title>Mi espacio | SkillSwap Live</title>
+
+    <link rel="icon" type="image/png" href="./assets/images/logo.png?v=app-prototype">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,700&display=swap"
+        rel="stylesheet"
+    >
+    <link rel="stylesheet" href="./assets/styles/app.css?v=app-prototype">
+</head>
+<body>
+<a class="skip-link" href="#app-content">Saltar al contenido</a>
+
+<div class="app-shell">
+    <aside class="sidebar" aria-label="Navegación de la aplicación">
+        <a class="app-brand" href="./index.html" aria-label="Volver a SkillSwap Live">
+            <img src="./assets/images/logo.png" alt="">
+            <span>
+                <strong>SkillSwap</strong>
+                <small>Live</small>
+            </span>
+        </a>
+
+        <nav class="side-nav" aria-label="Secciones principales">
+            <button class="nav-item is-active" type="button" data-view-target="home">
+                <i data-lucide="layout-dashboard" aria-hidden="true"></i>
+                <span>Inicio</span>
+            </button>
+            <button class="nav-item" type="button" data-view-target="search">
+                <i data-lucide="search" aria-hidden="true"></i>
+                <span>Buscar</span>
+            </button>
+            <button class="nav-item" type="button" data-view-target="mentorships">
+                <i data-lucide="calendar-check-2" aria-hidden="true"></i>
+                <span>Mentorías</span>
+                <span class="nav-count">2</span>
+            </button>
+            <button class="nav-item" type="button" data-view-target="community">
+                <i data-lucide="users" aria-hidden="true"></i>
+                <span>Comunidad</span>
+            </button>
+            <button class="nav-item" type="button" data-view-target="credits">
+                <i data-lucide="circle-dollar-sign" aria-hidden="true"></i>
+                <span>Créditos</span>
+            </button>
+            <button class="nav-item" type="button" data-view-target="profile">
+                <i data-lucide="user-round" aria-hidden="true"></i>
+                <span>Perfil</span>
+            </button>
+        </nav>
+
+        <div class="sidebar-support">
+            <div class="support-mark">
+                <i data-lucide="shield-check" aria-hidden="true"></i>
+            </div>
+            <strong>Centro de confianza</strong>
+            <p>Revisa consejos, lugares seguros y opciones de reporte.</p>
+            <button class="text-button" type="button" data-view-target="profile">
+                Ver seguridad
+                <i data-lucide="arrow-right" aria-hidden="true"></i>
+            </button>
+        </div>
+
+        <a class="back-link" href="./index.html">
+            <i data-lucide="arrow-left" aria-hidden="true"></i>
+            Volver a la landing
+        </a>
+    </aside>
+
+    <div class="app-main">
+        <header class="topbar">
+            <div>
+                <span class="topbar-kicker">Mi espacio</span>
+                <h1 id="view-title">Buenos días, Andrea</h1>
+            </div>
+
+            <div class="topbar-actions">
+                <button
+                    class="icon-button"
+                    id="quick-search-button"
+                    type="button"
+                    aria-label="Ir a buscar mentores"
+                    title="Buscar mentores"
+                >
+                    <i data-lucide="search" aria-hidden="true"></i>
+                </button>
+                <button
+                    class="icon-button notification-button"
+                    id="notification-button"
+                    type="button"
+                    aria-label="Abrir notificaciones"
+                    aria-expanded="false"
+                    title="Notificaciones"
+                >
+                    <i data-lucide="bell" aria-hidden="true"></i>
+                    <span aria-hidden="true"></span>
+                </button>
+                <button class="profile-menu" type="button" data-view-target="profile">
+                    <span class="avatar avatar-coral">AM</span>
+                    <span>
+                        <strong>Andrea Mendoza</strong>
+                        <small>85 créditos</small>
+                    </span>
+                    <i data-lucide="chevron-down" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <section class="notification-panel" id="notification-panel" aria-label="Notificaciones recientes" hidden>
+                <div class="panel-title">
+                    <h2>Notificaciones</h2>
+                    <button class="icon-button compact" id="close-notifications" type="button" aria-label="Cerrar notificaciones">
+                        <i data-lucide="x" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <button class="notification-item" type="button" data-view-target="mentorships">
+                    <span class="notification-icon success">
+                        <i data-lucide="check" aria-hidden="true"></i>
+                    </span>
+                    <span>
+                        <strong>Mentoría confirmada</strong>
+                        <small>José aceptó tu sesión de Python.</small>
+                    </span>
+                </button>
+                <button class="notification-item" type="button" data-view-target="community">
+                    <span class="notification-icon amber">
+                        <i data-lucide="star" aria-hidden="true"></i>
+                    </span>
+                    <span>
+                        <strong>Nueva reseña</strong>
+                        <small>Mariana calificó tu mentoría con 5 estrellas.</small>
+                    </span>
+                </button>
+                <button class="notification-item" type="button" data-view-target="credits">
+                    <span class="notification-icon blue">
+                        <i data-lucide="coins" aria-hidden="true"></i>
+                    </span>
+                    <span>
+                        <strong>Créditos recibidos</strong>
+                        <small>Ganaste 30 créditos por enseñar Excel.</small>
+                    </span>
+                </button>
+            </section>
+        </header>
+
+        <main id="app-content">
+            <section class="app-view is-visible" data-view="home" aria-labelledby="view-title">
+                <div class="welcome-strip">
+                    <div>
+                        <span class="eyebrow">Próxima mentoría</span>
+                        <h2>Python para análisis de datos</h2>
+                        <p>
+                            Hoy, 6:30 p. m. con José Paredes
+                            <span class="status-dot"></span>
+                            Virtual
+                        </p>
+                    </div>
+                    <div class="welcome-actions">
+                        <span class="time-chip">
+                            <i data-lucide="clock-3" aria-hidden="true"></i>
+                            En 2 h 15 min
+                        </span>
+                        <button class="button button-primary" type="button" data-session-action="join">
+                            <i data-lucide="video" aria-hidden="true"></i>
+                            Entrar a la sesión
+                        </button>
+                    </div>
+                </div>
+
+                <div class="metric-grid" aria-label="Resumen de la cuenta">
+                    <article class="metric-card">
+                        <span class="metric-icon blue"><i data-lucide="coins" aria-hidden="true"></i></span>
+                        <div>
+                            <small>Saldo disponible</small>
+                            <strong>85 créditos</strong>
+                            <span class="positive">+30 esta semana</span>
+                        </div>
+                    </article>
+                    <article class="metric-card">
+                        <span class="metric-icon teal"><i data-lucide="calendar-days" aria-hidden="true"></i></span>
+                        <div>
+                            <small>Mentorías activas</small>
+                            <strong>2 sesiones</strong>
+                            <span>Una pendiente</span>
+                        </div>
+                    </article>
+                    <article class="metric-card">
+                        <span class="metric-icon coral"><i data-lucide="sparkles" aria-hidden="true"></i></span>
+                        <div>
+                            <small>Reputación</small>
+                            <strong>4.9 de 5</strong>
+                            <span>12 reseñas recibidas</span>
+                        </div>
+                    </article>
+                    <article class="metric-card">
+                        <span class="metric-icon amber"><i data-lucide="trophy" aria-hidden="true"></i></span>
+                        <div>
+                            <small>Tiempo compartido</small>
+                            <strong>7 h 30 min</strong>
+                            <span>Nivel Colaborador</span>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="dashboard-grid">
+                    <section class="content-panel schedule-panel">
+                        <div class="panel-heading">
+                            <div>
+                                <span class="eyebrow">Agenda</span>
+                                <h2>Esta semana</h2>
+                            </div>
+                            <button class="text-button" type="button" data-view-target="mentorships">
+                                Ver todas
+                                <i data-lucide="arrow-right" aria-hidden="true"></i>
+                            </button>
+                        </div>
+
+                        <div class="schedule-list">
+                            <article class="schedule-item">
+                                <time datetime="2026-07-05T18:30">
+                                    <strong>05</strong>
+                                    <span>JUL</span>
+                                </time>
+                                <div>
+                                    <span class="status-label confirmed">Confirmada</span>
+                                    <h3>Python para análisis de datos</h3>
+                                    <p>Con José Paredes · 6:30 p. m. · Virtual</p>
+                                </div>
+                                <button class="icon-button compact" type="button" data-session-action="details" aria-label="Ver detalles de la mentoría">
+                                    <i data-lucide="chevron-right" aria-hidden="true"></i>
+                                </button>
+                            </article>
+                            <article class="schedule-item">
+                                <time datetime="2026-07-08T16:00">
+                                    <strong>08</strong>
+                                    <span>JUL</span>
+                                </time>
+                                <div>
+                                    <span class="status-label pending">Pendiente</span>
+                                    <h3>Dashboard financiero en Excel</h3>
+                                    <p>Para Mariana Torres · 4:00 p. m. · Presencial</p>
+                                </div>
+                                <button class="icon-button compact" type="button" data-session-action="details" aria-label="Ver detalles de la mentoría">
+                                    <i data-lucide="chevron-right" aria-hidden="true"></i>
+                                </button>
+                            </article>
+                        </div>
+                    </section>
+
+                    <section class="content-panel progress-panel">
+                        <div class="panel-heading">
+                            <div>
+                                <span class="eyebrow">Progreso mensual</span>
+                                <h2>Tiempo que compartes</h2>
+                            </div>
+                            <span class="trend positive">
+                                <i data-lucide="trending-up" aria-hidden="true"></i>
+                                18%
+                            </span>
+                        </div>
+                        <div class="bar-chart" aria-label="Horas compartidas durante los últimos seis meses">
+                            <div style="--bar: 38%"><span>FEB</span></div>
+                            <div style="--bar: 56%"><span>MAR</span></div>
+                            <div style="--bar: 45%"><span>ABR</span></div>
+                            <div style="--bar: 70%"><span>MAY</span></div>
+                            <div style="--bar: 62%"><span>JUN</span></div>
+                            <div class="is-current" style="--bar: 88%"><span>JUL</span></div>
+                        </div>
+                        <div class="chart-summary">
+                            <strong>7.5 horas</strong>
+                            <span>2.5 horas más que el mes anterior</span>
+                        </div>
+                    </section>
+                </div>
+
+                <section class="recommendation-section">
+                    <div class="panel-heading">
+                        <div>
+                            <span class="eyebrow">Para ti</span>
+                            <h2>Mentores según tus intereses</h2>
+                        </div>
+                        <button class="text-button" type="button" data-view-target="search">
+                            Explorar mentores
+                            <i data-lucide="arrow-right" aria-hidden="true"></i>
+                        </button>
+                    </div>
+
+                    <div class="mentor-grid compact-grid">
+                        <article class="mentor-card" data-name="Grecia Ascarza" data-skill="Estadística inferencial">
+                            <div class="mentor-top">
+                                <span class="avatar avatar-teal">GA</span>
+                                <button class="icon-button compact favorite-button" type="button" aria-label="Agregar a favoritos" aria-pressed="false">
+                                    <i data-lucide="heart" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                            <h3>Grecia Ascarza</h3>
+                            <p>Estadística inferencial</p>
+                            <div class="mentor-meta">
+                                <span><i data-lucide="star" aria-hidden="true"></i> 4.8</span>
+                                <span><i data-lucide="map-pin" aria-hidden="true"></i> Surco</span>
+                            </div>
+                            <button class="button button-secondary mentor-details-button" type="button">Ver perfil</button>
+                        </article>
+                        <article class="mentor-card" data-name="Jhoel Armas" data-skill="Power BI y Figma">
+                            <div class="mentor-top">
+                                <span class="avatar avatar-blue">JA</span>
+                                <button class="icon-button compact favorite-button" type="button" aria-label="Agregar a favoritos" aria-pressed="false">
+                                    <i data-lucide="heart" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                            <h3>Jhoel Armas</h3>
+                            <p>Power BI y Figma</p>
+                            <div class="mentor-meta">
+                                <span><i data-lucide="star" aria-hidden="true"></i> 4.9</span>
+                                <span><i data-lucide="video" aria-hidden="true"></i> Virtual</span>
+                            </div>
+                            <button class="button button-secondary mentor-details-button" type="button">Ver perfil</button>
+                        </article>
+                        <article class="mentor-card" data-name="Lucía Velarde" data-skill="Inglés conversacional">
+                            <div class="mentor-top">
+                                <span class="avatar avatar-amber">LV</span>
+                                <button class="icon-button compact favorite-button" type="button" aria-label="Agregar a favoritos" aria-pressed="false">
+                                    <i data-lucide="heart" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                            <h3>Lucía Velarde</h3>
+                            <p>Inglés conversacional</p>
+                            <div class="mentor-meta">
+                                <span><i data-lucide="star" aria-hidden="true"></i> 4.7</span>
+                                <span><i data-lucide="map-pin" aria-hidden="true"></i> Miraflores</span>
+                            </div>
+                            <button class="button button-secondary mentor-details-button" type="button">Ver perfil</button>
+                        </article>
+                    </div>
+                </section>
+            </section>
+
+            <section class="app-view" data-view="search" aria-labelledby="view-title" hidden>
+                <div class="view-intro">
+                    <div>
+                        <span class="eyebrow">Descubrir</span>
+                        <h2>Encuentra a la persona indicada</h2>
+                        <p>Compara experiencia, modalidad, disponibilidad y reputación antes de solicitar una mentoría.</p>
+                    </div>
+                    <button class="button button-secondary" id="favorites-filter" type="button" aria-pressed="false">
+                        <i data-lucide="heart" aria-hidden="true"></i>
+                        Mis favoritos
+                    </button>
+                </div>
+
+                <form class="search-toolbar" id="mentor-search-form">
+                    <label class="search-field" for="mentor-search">
+                        <i data-lucide="search" aria-hidden="true"></i>
+                        <input id="mentor-search" type="search" placeholder="¿Qué quieres aprender?" autocomplete="off">
+                    </label>
+                    <label>
+                        <span class="sr-only">Modalidad</span>
+                        <select id="modality-filter">
+                            <option value="all">Cualquier modalidad</option>
+                            <option value="virtual">Virtual</option>
+                            <option value="presencial">Presencial</option>
+                        </select>
+                    </label>
+                    <label>
+                        <span class="sr-only">Distrito</span>
+                        <select id="location-filter">
+                            <option value="all">Todos los distritos</option>
+                            <option value="surco">Surco</option>
+                            <option value="miraflores">Miraflores</option>
+                            <option value="san-borja">San Borja</option>
+                        </select>
+                    </label>
+                    <button class="button button-primary" type="submit">Buscar</button>
+                </form>
+
+                <div class="filter-row">
+                    <button class="filter-chip is-active" type="button" data-rating="all">Todos</button>
+                    <button class="filter-chip" type="button" data-rating="top">
+                        <i data-lucide="star" aria-hidden="true"></i>
+                        4.8 o más
+                    </button>
+                    <button class="filter-chip" type="button" data-rating="available">
+                        <i data-lucide="zap" aria-hidden="true"></i>
+                        Disponible hoy
+                    </button>
+                    <button class="filter-chip" type="button" data-rating="nearby">
+                        <i data-lucide="navigation" aria-hidden="true"></i>
+                        Cerca de mí
+                    </button>
+                </div>
+
+                <div class="results-heading">
+                    <p><strong id="result-count">6 mentores</strong> encontrados</p>
+                    <label>
+                        <span>Ordenar por</span>
+                        <select id="sort-filter">
+                            <option value="recommended">Recomendados</option>
+                            <option value="rating">Mejor calificación</option>
+                            <option value="credits">Menos créditos</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div class="mentor-grid search-results" id="mentor-results">
+                    <article class="mentor-card result-mentor" data-name="José Paredes" data-skill="Python Power BI" data-modality="virtual" data-location="surco" data-rating="4.9" data-credits="30" data-tags="top available">
+                        <div class="availability">Disponible hoy</div>
+                        <div class="mentor-top">
+                            <span class="avatar avatar-blue">JP</span>
+                            <button class="icon-button compact favorite-button" type="button" aria-label="Agregar a favoritos" aria-pressed="false">
+                                <i data-lucide="heart" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <h3>José Paredes</h3>
+                        <p>Python, Power BI y análisis de datos</p>
+                        <div class="skill-tags"><span>Python</span><span>Power BI</span></div>
+                        <div class="mentor-meta">
+                            <span><i data-lucide="star" aria-hidden="true"></i> 4.9 (24)</span>
+                            <span><i data-lucide="video" aria-hidden="true"></i> Virtual</span>
+                        </div>
+                        <div class="card-footer">
+                            <strong>30 créditos</strong>
+                            <button class="button button-secondary mentor-details-button" type="button">Ver perfil</button>
+                        </div>
+                    </article>
+
+                    <article class="mentor-card result-mentor" data-name="Grecia Ascarza" data-skill="Estadística R" data-modality="presencial" data-location="surco" data-rating="4.8" data-credits="25" data-tags="top nearby">
+                        <div class="availability neutral">A 1.2 km</div>
+                        <div class="mentor-top">
+                            <span class="avatar avatar-teal">GA</span>
+                            <button class="icon-button compact favorite-button" type="button" aria-label="Agregar a favoritos" aria-pressed="false">
+                                <i data-lucide="heart" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <h3>Grecia Ascarza</h3>
+                        <p>Estadística inferencial y R</p>
+                        <div class="skill-tags"><span>Estadística</span><span>R</span></div>
+                        <div class="mentor-meta">
+                            <span><i data-lucide="star" aria-hidden="true"></i> 4.8 (19)</span>
+                            <span><i data-lucide="map-pin" aria-hidden="true"></i> Surco</span>
+                        </div>
+                        <div class="card-footer">
+                            <strong>25 créditos</strong>
+                            <button class="button button-secondary mentor-details-button" type="button">Ver perfil</button>
+                        </div>
+                    </article>
+
+                    <article class="mentor-card result-mentor" data-name="Jhoel Armas" data-skill="Figma Diseño UX" data-modality="virtual" data-location="san-borja" data-rating="4.9" data-credits="30" data-tags="top available">
+                        <div class="availability">Disponible hoy</div>
+                        <div class="mentor-top">
+                            <span class="avatar avatar-coral">JA</span>
+                            <button class="icon-button compact favorite-button" type="button" aria-label="Agregar a favoritos" aria-pressed="false">
+                                <i data-lucide="heart" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <h3>Jhoel Armas</h3>
+                        <p>Figma, prototipado y diseño UX</p>
+                        <div class="skill-tags"><span>Figma</span><span>UX</span></div>
+                        <div class="mentor-meta">
+                            <span><i data-lucide="star" aria-hidden="true"></i> 4.9 (31)</span>
+                            <span><i data-lucide="video" aria-hidden="true"></i> Virtual</span>
+                        </div>
+                        <div class="card-footer">
+                            <strong>30 créditos</strong>
+                            <button class="button button-secondary mentor-details-button" type="button">Ver perfil</button>
+                        </div>
+                    </article>
+
+                    <article class="mentor-card result-mentor" data-name="Lucía Velarde" data-skill="Inglés Conversación" data-modality="presencial" data-location="miraflores" data-rating="4.7" data-credits="20" data-tags="nearby">
+                        <div class="availability neutral">A 2.5 km</div>
+                        <div class="mentor-top">
+                            <span class="avatar avatar-amber">LV</span>
+                            <button class="icon-button compact favorite-button" type="button" aria-label="Agregar a favoritos" aria-pressed="false">
+                                <i data-lucide="heart" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <h3>Lucía Velarde</h3>
+                        <p>Inglés conversacional</p>
+                        <div class="skill-tags"><span>Inglés</span><span>Speaking</span></div>
+                        <div class="mentor-meta">
+                            <span><i data-lucide="star" aria-hidden="true"></i> 4.7 (15)</span>
+                            <span><i data-lucide="map-pin" aria-hidden="true"></i> Miraflores</span>
+                        </div>
+                        <div class="card-footer">
+                            <strong>20 créditos</strong>
+                            <button class="button button-secondary mentor-details-button" type="button">Ver perfil</button>
+                        </div>
+                    </article>
+
+                    <article class="mentor-card result-mentor" data-name="Mariana Torres" data-skill="Excel Finanzas" data-modality="virtual" data-location="surco" data-rating="4.8" data-credits="25" data-tags="top">
+                        <div class="availability neutral">Mañana</div>
+                        <div class="mentor-top">
+                            <span class="avatar avatar-mint">MT</span>
+                            <button class="icon-button compact favorite-button" type="button" aria-label="Agregar a favoritos" aria-pressed="false">
+                                <i data-lucide="heart" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <h3>Mariana Torres</h3>
+                        <p>Excel aplicado a finanzas</p>
+                        <div class="skill-tags"><span>Excel</span><span>Finanzas</span></div>
+                        <div class="mentor-meta">
+                            <span><i data-lucide="star" aria-hidden="true"></i> 4.8 (17)</span>
+                            <span><i data-lucide="video" aria-hidden="true"></i> Virtual</span>
+                        </div>
+                        <div class="card-footer">
+                            <strong>25 créditos</strong>
+                            <button class="button button-secondary mentor-details-button" type="button">Ver perfil</button>
+                        </div>
+                    </article>
+
+                    <article class="mentor-card result-mentor" data-name="Jeferson Contreras" data-skill="Guitarra Música" data-modality="presencial" data-location="san-borja" data-rating="4.6" data-credits="20" data-tags="nearby available">
+                        <div class="availability">Disponible hoy</div>
+                        <div class="mentor-top">
+                            <span class="avatar avatar-blue">JC</span>
+                            <button class="icon-button compact favorite-button" type="button" aria-label="Agregar a favoritos" aria-pressed="false">
+                                <i data-lucide="heart" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <h3>Jeferson Contreras</h3>
+                        <p>Guitarra funcional desde cero</p>
+                        <div class="skill-tags"><span>Guitarra</span><span>Música</span></div>
+                        <div class="mentor-meta">
+                            <span><i data-lucide="star" aria-hidden="true"></i> 4.6 (11)</span>
+                            <span><i data-lucide="map-pin" aria-hidden="true"></i> San Borja</span>
+                        </div>
+                        <div class="card-footer">
+                            <strong>20 créditos</strong>
+                            <button class="button button-secondary mentor-details-button" type="button">Ver perfil</button>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="empty-state" id="search-empty-state" hidden>
+                    <i data-lucide="search-x" aria-hidden="true"></i>
+                    <h3>No encontramos mentores con esos filtros</h3>
+                    <p>Prueba con otra habilidad, modalidad o ubicación.</p>
+                    <button class="button button-secondary" id="clear-search" type="button">Limpiar filtros</button>
+                </div>
+            </section>
+
+            <section class="app-view" data-view="mentorships" aria-labelledby="view-title" hidden>
+                <div class="view-intro">
+                    <div>
+                        <span class="eyebrow">Organización</span>
+                        <h2>Tus mentorías en un solo lugar</h2>
+                        <p>Coordina sesiones, comparte preguntas previas y revisa tu historial.</p>
+                    </div>
+                    <button class="button button-primary" type="button" data-view-target="search">
+                        <i data-lucide="plus" aria-hidden="true"></i>
+                        Nueva mentoría
+                    </button>
+                </div>
+
+                <div class="segmented-control" role="tablist" aria-label="Filtrar mentorías">
+                    <button class="is-active" type="button" role="tab" aria-selected="true" data-session-filter="upcoming">Próximas <span>2</span></button>
+                    <button type="button" role="tab" aria-selected="false" data-session-filter="pending">Solicitudes <span>1</span></button>
+                    <button type="button" role="tab" aria-selected="false" data-session-filter="completed">Completadas</button>
+                </div>
+
+                <div class="mentorship-layout">
+                    <div class="session-list">
+                        <article class="session-card" data-session-status="upcoming">
+                            <div class="session-date">
+                                <strong>05</strong>
+                                <span>JUL</span>
+                                <small>18:30</small>
+                            </div>
+                            <div class="session-main">
+                                <div class="session-title-row">
+                                    <div>
+                                        <span class="status-label confirmed">Confirmada</span>
+                                        <h3>Python para análisis de datos</h3>
+                                    </div>
+                                    <button class="icon-button compact" type="button" aria-label="Más opciones">
+                                        <i data-lucide="ellipsis" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <div class="person-line">
+                                    <span class="avatar avatar-blue small">JP</span>
+                                    <span><strong>José Paredes</strong><small>Mentor · Virtual</small></span>
+                                </div>
+                                <div class="prior-question">
+                                    <i data-lucide="message-square-text" aria-hidden="true"></i>
+                                    <span><strong>Pregunta previa:</strong> ¿Cómo limpio valores nulos antes de crear un gráfico?</span>
+                                </div>
+                                <div class="session-actions">
+                                    <button class="button button-primary" type="button" data-session-action="join">
+                                        <i data-lucide="video" aria-hidden="true"></i>
+                                        Entrar
+                                    </button>
+                                    <button class="button button-secondary" type="button" data-session-action="message">
+                                        <i data-lucide="message-circle" aria-hidden="true"></i>
+                                        Mensaje
+                                    </button>
+                                    <button class="text-button danger" type="button" data-session-action="cancel">Cancelar</button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="session-card" data-session-status="upcoming">
+                            <div class="session-date teal-date">
+                                <strong>08</strong>
+                                <span>JUL</span>
+                                <small>16:00</small>
+                            </div>
+                            <div class="session-main">
+                                <div class="session-title-row">
+                                    <div>
+                                        <span class="status-label confirmed">Confirmada</span>
+                                        <h3>Dashboard financiero en Excel</h3>
+                                    </div>
+                                    <button class="icon-button compact" type="button" aria-label="Más opciones">
+                                        <i data-lucide="ellipsis" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <div class="person-line">
+                                    <span class="avatar avatar-mint small">MT</span>
+                                    <span><strong>Mariana Torres</strong><small>Aprendiz · Presencial</small></span>
+                                </div>
+                                <div class="safe-place">
+                                    <i data-lucide="shield-check" aria-hidden="true"></i>
+                                    <span>Biblioteca del campus · Lugar sugerido como seguro</span>
+                                </div>
+                                <div class="session-actions">
+                                    <button class="button button-secondary" type="button" data-session-action="message">
+                                        <i data-lucide="message-circle" aria-hidden="true"></i>
+                                        Mensaje
+                                    </button>
+                                    <button class="button button-secondary" type="button" data-session-action="attendance">
+                                        <i data-lucide="map-pin-check" aria-hidden="true"></i>
+                                        Confirmar asistencia
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="session-card" data-session-status="pending" hidden>
+                            <div class="session-date amber-date">
+                                <strong>10</strong>
+                                <span>JUL</span>
+                                <small>19:00</small>
+                            </div>
+                            <div class="session-main">
+                                <div class="session-title-row">
+                                    <div>
+                                        <span class="status-label pending">Por responder</span>
+                                        <h3>Introducción a Figma</h3>
+                                    </div>
+                                    <button class="icon-button compact" type="button" aria-label="Más opciones">
+                                        <i data-lucide="ellipsis" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <div class="person-line">
+                                    <span class="avatar avatar-amber small">CV</span>
+                                    <span><strong>Carlos Vera</strong><small>Solicita aprender · Virtual</small></span>
+                                </div>
+                                <div class="prior-question">
+                                    <i data-lucide="message-square-text" aria-hidden="true"></i>
+                                    <span><strong>Pregunta previa:</strong> Quiero ordenar mi primer sistema de componentes.</span>
+                                </div>
+                                <div class="session-actions">
+                                    <button class="button button-primary" type="button" data-session-action="accept">Aceptar</button>
+                                    <button class="button button-secondary" type="button" data-session-action="reject">Rechazar</button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="session-card" data-session-status="completed" hidden>
+                            <div class="session-date muted-date">
+                                <strong>28</strong>
+                                <span>JUN</span>
+                                <small>17:00</small>
+                            </div>
+                            <div class="session-main">
+                                <div class="session-title-row">
+                                    <div>
+                                        <span class="status-label completed">Completada</span>
+                                        <h3>Tablas dinámicas en Excel</h3>
+                                    </div>
+                                </div>
+                                <div class="person-line">
+                                    <span class="avatar avatar-coral small">MS</span>
+                                    <span><strong>María Salazar</strong><small>Aprendiz · Virtual</small></span>
+                                </div>
+                                <div class="review-summary">
+                                    <span>Tu calificación</span>
+                                    <strong>★★★★★</strong>
+                                    <span>“Explicación clara y muy práctica.”</span>
+                                </div>
+                                <div class="session-actions">
+                                    <button class="button button-secondary" type="button" data-session-action="repeat">
+                                        <i data-lucide="repeat-2" aria-hidden="true"></i>
+                                        Repetir mentoría
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <aside class="content-panel reminder-panel">
+                        <span class="metric-icon amber"><i data-lucide="bell-ring" aria-hidden="true"></i></span>
+                        <h2>Recordatorios activos</h2>
+                        <p>Recibirás una alerta 30 minutos antes de cada sesión.</p>
+                        <label class="toggle-row">
+                            <span>
+                                <strong>Notificaciones</strong>
+                                <small>En la aplicación</small>
+                            </span>
+                            <input type="checkbox" checked>
+                            <span class="toggle" aria-hidden="true"></span>
+                        </label>
+                        <label class="toggle-row">
+                            <span>
+                                <strong>Correo electrónico</strong>
+                                <small>Resumen y cambios</small>
+                            </span>
+                            <input type="checkbox" checked>
+                            <span class="toggle" aria-hidden="true"></span>
+                        </label>
+                    </aside>
+                </div>
+            </section>
+
+            <section class="app-view" data-view="community" aria-labelledby="view-title" hidden>
+                <div class="view-intro">
+                    <div>
+                        <span class="eyebrow">Red de aprendizaje</span>
+                        <h2>Aprende con lo que comparte la comunidad</h2>
+                        <p>Descubre tendencias, celebra logros y encuentra personas con intereses similares.</p>
+                    </div>
+                    <button class="button button-primary" id="share-achievement" type="button">
+                        <i data-lucide="send" aria-hidden="true"></i>
+                        Compartir logro
+                    </button>
+                </div>
+
+                <div class="community-layout">
+                    <div class="community-feed">
+                        <article class="feed-card">
+                            <div class="feed-author">
+                                <span class="avatar avatar-teal">GA</span>
+                                <span>
+                                    <strong>Grecia Ascarza</strong>
+                                    <small>Hace 25 minutos · Surco</small>
+                                </span>
+                                <button class="icon-button compact" type="button" aria-label="Más opciones">
+                                    <i data-lucide="ellipsis" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                            <div class="achievement-banner teal-banner">
+                                <span><i data-lucide="badge-check" aria-hidden="true"></i> Logro desbloqueado</span>
+                                <strong>10 mentorías compartiendo estadística</strong>
+                                <p>Hoy completé mi décima sesión. Enseñar también me ayuda a ordenar mejor lo que sé.</p>
+                            </div>
+                            <div class="feed-actions">
+                                <button type="button" class="reaction-button" aria-pressed="false">
+                                    <i data-lucide="heart" aria-hidden="true"></i>
+                                    <span>18</span>
+                                </button>
+                                <button type="button">
+                                    <i data-lucide="message-circle" aria-hidden="true"></i>
+                                    4 comentarios
+                                </button>
+                                <button type="button" class="share-button">
+                                    <i data-lucide="share-2" aria-hidden="true"></i>
+                                    Compartir
+                                </button>
+                            </div>
+                        </article>
+
+                        <article class="feed-card">
+                            <div class="feed-author">
+                                <span class="avatar avatar-blue">JP</span>
+                                <span>
+                                    <strong>José Paredes</strong>
+                                    <small>Hace 2 horas · Virtual</small>
+                                </span>
+                                <button class="icon-button compact" type="button" aria-label="Más opciones">
+                                    <i data-lucide="ellipsis" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                            <p class="feed-copy">
+                                Armé una ruta corta para empezar con Python: variables, listas, pandas y un proyecto pequeño.
+                                Tengo dos espacios libres esta semana para quien quiera practicar.
+                            </p>
+                            <div class="feed-topic">
+                                <span><i data-lucide="code-2" aria-hidden="true"></i></span>
+                                <div>
+                                    <strong>Ruta inicial de Python</strong>
+                                    <small>4 sesiones · Nivel principiante</small>
+                                </div>
+                                <button class="button button-secondary" type="button" data-view-target="search">Ver mentor</button>
+                            </div>
+                            <div class="feed-actions">
+                                <button type="button" class="reaction-button" aria-pressed="false">
+                                    <i data-lucide="heart" aria-hidden="true"></i>
+                                    <span>32</span>
+                                </button>
+                                <button type="button">
+                                    <i data-lucide="message-circle" aria-hidden="true"></i>
+                                    7 comentarios
+                                </button>
+                                <button type="button" class="share-button">
+                                    <i data-lucide="share-2" aria-hidden="true"></i>
+                                    Compartir
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <aside class="community-aside">
+                        <section class="content-panel">
+                            <div class="panel-heading">
+                                <div>
+                                    <span class="eyebrow">Tendencias</span>
+                                    <h2>Más buscado</h2>
+                                </div>
+                            </div>
+                            <ol class="trending-list">
+                                <li><span>01</span><div><strong>Python</strong><small>148 búsquedas</small></div><i data-lucide="trending-up" aria-hidden="true"></i></li>
+                                <li><span>02</span><div><strong>Excel</strong><small>126 búsquedas</small></div><i data-lucide="trending-up" aria-hidden="true"></i></li>
+                                <li><span>03</span><div><strong>Inglés</strong><small>103 búsquedas</small></div><i data-lucide="minus" aria-hidden="true"></i></li>
+                                <li><span>04</span><div><strong>Figma</strong><small>87 búsquedas</small></div><i data-lucide="trending-up" aria-hidden="true"></i></li>
+                            </ol>
+                        </section>
+
+                        <section class="invite-panel">
+                            <span class="metric-icon coral"><i data-lucide="user-plus" aria-hidden="true"></i></span>
+                            <h2>Aprender es mejor acompañado</h2>
+                            <p>Invita a una amistad y ambos reciben 10 créditos al completar su primera mentoría.</p>
+                            <button class="button button-dark" id="copy-invite" type="button">
+                                <i data-lucide="copy" aria-hidden="true"></i>
+                                Copiar invitación
+                            </button>
+                        </section>
+                    </aside>
+                </div>
+            </section>
+
+            <section class="app-view" data-view="credits" aria-labelledby="view-title" hidden>
+                <div class="view-intro">
+                    <div>
+                        <span class="eyebrow">Intercambio de tiempo</span>
+                        <h2>Tus créditos hacen circular el conocimiento</h2>
+                        <p>Gana créditos enseñando y úsalos para aprender una habilidad nueva.</p>
+                    </div>
+                    <button class="button button-primary" type="button" data-view-target="search">
+                        <i data-lucide="graduation-cap" aria-hidden="true"></i>
+                        Usar mis créditos
+                    </button>
+                </div>
+
+                <div class="credit-overview">
+                    <section class="balance-panel">
+                        <span>Saldo actual</span>
+                        <strong>85</strong>
+                        <small>créditos disponibles</small>
+                        <div class="balance-change">
+                            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+                            35 ganados este mes
+                        </div>
+                    </section>
+                    <section class="credit-rule">
+                        <div>
+                            <span class="metric-icon teal"><i data-lucide="hand-helping" aria-hidden="true"></i></span>
+                            <strong>Enseña</strong>
+                            <p>Comparte 30 minutos de lo que sabes.</p>
+                        </div>
+                        <i data-lucide="arrow-right" aria-hidden="true"></i>
+                        <div>
+                            <span class="metric-icon amber"><i data-lucide="coins" aria-hidden="true"></i></span>
+                            <strong>Gana</strong>
+                            <p>Recibe créditos por la sesión completada.</p>
+                        </div>
+                        <i data-lucide="arrow-right" aria-hidden="true"></i>
+                        <div>
+                            <span class="metric-icon coral"><i data-lucide="book-open" aria-hidden="true"></i></span>
+                            <strong>Aprende</strong>
+                            <p>Úsalos con otro mentor de la comunidad.</p>
+                        </div>
+                    </section>
+                </div>
+
+                <section class="content-panel transaction-panel">
+                    <div class="panel-heading transaction-heading">
+                        <div>
+                            <span class="eyebrow">Movimientos</span>
+                            <h2>Historial de créditos</h2>
+                        </div>
+                        <label>
+                            <span class="sr-only">Filtrar movimientos</span>
+                            <select id="transaction-filter">
+                                <option value="all">Todos los movimientos</option>
+                                <option value="earned">Créditos ganados</option>
+                                <option value="spent">Créditos usados</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <div class="transaction-list">
+                        <article data-transaction="earned">
+                            <span class="transaction-icon earned"><i data-lucide="arrow-down-left" aria-hidden="true"></i></span>
+                            <div><strong>Mentoría de Excel completada</strong><small>Hoy, 11:35 a. m. · Mariana Torres</small></div>
+                            <span class="transaction-amount positive">+30</span>
+                        </article>
+                        <article data-transaction="spent">
+                            <span class="transaction-icon spent"><i data-lucide="arrow-up-right" aria-hidden="true"></i></span>
+                            <div><strong>Sesión de Python confirmada</strong><small>3 jul, 4:20 p. m. · José Paredes</small></div>
+                            <span class="transaction-amount negative">-30</span>
+                        </article>
+                        <article data-transaction="earned">
+                            <span class="transaction-icon bonus"><i data-lucide="gift" aria-hidden="true"></i></span>
+                            <div><strong>Bonificación por constancia</strong><small>1 jul, 9:00 a. m. · SkillSwap Live</small></div>
+                            <span class="transaction-amount positive">+10</span>
+                        </article>
+                        <article data-transaction="earned">
+                            <span class="transaction-icon earned"><i data-lucide="arrow-down-left" aria-hidden="true"></i></span>
+                            <div><strong>Mentoría de Figma completada</strong><small>28 jun, 6:10 p. m. · Carlos Vera</small></div>
+                            <span class="transaction-amount positive">+25</span>
+                        </article>
+                        <article data-transaction="spent">
+                            <span class="transaction-icon spent"><i data-lucide="arrow-up-right" aria-hidden="true"></i></span>
+                            <div><strong>Sesión de inglés conversacional</strong><small>24 jun, 7:40 p. m. · Lucía Velarde</small></div>
+                            <span class="transaction-amount negative">-20</span>
+                        </article>
+                    </div>
+                </section>
+            </section>
+
+            <section class="app-view" data-view="profile" aria-labelledby="view-title" hidden>
+                <div class="profile-header">
+                    <div class="profile-identity">
+                        <span class="avatar avatar-coral profile-avatar">AM</span>
+                        <div>
+                            <span class="eyebrow">Mi perfil</span>
+                            <h2>Andrea Mendoza</h2>
+                            <p>Diseñadora UX · Surco, Lima</p>
+                            <div class="profile-badges">
+                                <span><i data-lucide="badge-check" aria-hidden="true"></i> Identidad verificada</span>
+                                <span><i data-lucide="star" aria-hidden="true"></i> 4.9 de reputación</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="button button-secondary" id="edit-profile" type="button">
+                        <i data-lucide="pencil" aria-hidden="true"></i>
+                        Editar perfil
+                    </button>
+                </div>
+
+                <div class="profile-layout">
+                    <div class="profile-main">
+                        <section class="content-panel profile-section">
+                            <div class="panel-heading">
+                                <div>
+                                    <span class="eyebrow">Lo que compartes</span>
+                                    <h2>Habilidades para enseñar</h2>
+                                </div>
+                                <button class="icon-button compact" type="button" aria-label="Agregar habilidad">
+                                    <i data-lucide="plus" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                            <div class="editable-tags">
+                                <span>Diseño UX <button type="button" aria-label="Quitar Diseño UX">×</button></span>
+                                <span>Figma <button type="button" aria-label="Quitar Figma">×</button></span>
+                                <span>Prototipado <button type="button" aria-label="Quitar Prototipado">×</button></span>
+                                <span>Investigación <button type="button" aria-label="Quitar Investigación">×</button></span>
+                            </div>
+                        </section>
+
+                        <section class="content-panel profile-section">
+                            <div class="panel-heading">
+                                <div>
+                                    <span class="eyebrow">Lo que buscas</span>
+                                    <h2>Intereses de aprendizaje</h2>
+                                </div>
+                                <button class="icon-button compact" type="button" aria-label="Agregar interés">
+                                    <i data-lucide="plus" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                            <div class="editable-tags interests">
+                                <span>Python <button type="button" aria-label="Quitar Python">×</button></span>
+                                <span>Power BI <button type="button" aria-label="Quitar Power BI">×</button></span>
+                                <span>Inglés <button type="button" aria-label="Quitar Inglés">×</button></span>
+                            </div>
+                        </section>
+
+                        <section class="content-panel profile-section">
+                            <div class="panel-heading">
+                                <div>
+                                    <span class="eyebrow">Disponibilidad</span>
+                                    <h2>Horarios para mentorías</h2>
+                                </div>
+                                <button class="text-button" id="save-availability" type="button">Guardar cambios</button>
+                            </div>
+                            <div class="availability-grid">
+                                <label><span>Lunes</span><input type="checkbox" checked><small>18:00 - 20:00</small></label>
+                                <label><span>Martes</span><input type="checkbox"><small>No disponible</small></label>
+                                <label><span>Miércoles</span><input type="checkbox" checked><small>16:00 - 19:00</small></label>
+                                <label><span>Jueves</span><input type="checkbox"><small>No disponible</small></label>
+                                <label><span>Viernes</span><input type="checkbox" checked><small>17:00 - 20:00</small></label>
+                            </div>
+                        </section>
+                    </div>
+
+                    <aside class="profile-aside">
+                        <section class="content-panel trust-panel">
+                            <div class="panel-heading">
+                                <div>
+                                    <span class="eyebrow">Confianza</span>
+                                    <h2>Seguridad de la cuenta</h2>
+                                </div>
+                            </div>
+                            <div class="security-score">
+                                <div class="score-ring"><strong>80%</strong></div>
+                                <span><strong>Perfil confiable</strong><small>Completa un paso más</small></span>
+                            </div>
+                            <ul class="security-list">
+                                <li class="is-done"><i data-lucide="check-circle-2" aria-hidden="true"></i><span><strong>Correo verificado</strong><small>andrea@email.com</small></span></li>
+                                <li class="is-done"><i data-lucide="check-circle-2" aria-hidden="true"></i><span><strong>Identidad verificada</strong><small>Documento validado</small></span></li>
+                                <li><i data-lucide="circle" aria-hidden="true"></i><span><strong>Teléfono pendiente</strong><small>Mejora la recuperación</small></span></li>
+                            </ul>
+                        </section>
+
+                        <section class="content-panel safety-actions">
+                            <h2>Herramientas de seguridad</h2>
+                            <button type="button" data-safety-action="places">
+                                <i data-lucide="map-pinned" aria-hidden="true"></i>
+                                <span><strong>Lugares seguros</strong><small>Consulta puntos recomendados</small></span>
+                                <i data-lucide="chevron-right" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" data-safety-action="blocked">
+                                <i data-lucide="user-x" aria-hidden="true"></i>
+                                <span><strong>Usuarios bloqueados</strong><small>Administra tus bloqueos</small></span>
+                                <i data-lucide="chevron-right" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" data-safety-action="report">
+                                <i data-lucide="flag" aria-hidden="true"></i>
+                                <span><strong>Reportar un incidente</strong><small>Recibe ayuda del equipo</small></span>
+                                <i data-lucide="chevron-right" aria-hidden="true"></i>
+                            </button>
+                        </section>
+                    </aside>
+                </div>
+            </section>
+        </main>
+    </div>
+</div>
+
+<dialog class="mentor-dialog" id="mentor-dialog">
+    <form method="dialog">
+        <button class="icon-button dialog-close" type="submit" aria-label="Cerrar">
+            <i data-lucide="x" aria-hidden="true"></i>
+        </button>
+    </form>
+    <div class="dialog-profile">
+        <span class="avatar avatar-blue dialog-avatar" id="dialog-avatar">JP</span>
+        <div>
+            <span class="status-label confirmed">Perfil verificado</span>
+            <h2 id="dialog-name">José Paredes</h2>
+            <p id="dialog-skill">Python y análisis de datos</p>
+        </div>
+    </div>
+    <div class="dialog-stats">
+        <span><strong>4.9</strong><small>Calificación</small></span>
+        <span><strong>24</strong><small>Mentorías</small></span>
+        <span><strong>98%</strong><small>Asistencia</small></span>
+    </div>
+    <p>
+        Me gusta enseñar con ejercicios cortos y ejemplos aplicados. Podemos resolver una duda puntual
+        o preparar una ruta de práctica.
+    </p>
+    <div class="dialog-section">
+        <strong>Próximos horarios</strong>
+        <div class="time-options">
+            <button class="is-selected" type="button">Hoy · 18:30</button>
+            <button type="button">Mañana · 17:00</button>
+            <button type="button">Mar · 19:00</button>
+        </div>
+    </div>
+    <label class="dialog-question" for="prior-question">
+        <span>Pregunta previa</span>
+        <textarea id="prior-question" rows="3" placeholder="Cuéntale al mentor qué necesitas resolver"></textarea>
+    </label>
+    <div class="dialog-footer">
+        <span><strong>30 créditos</strong><small>por 30 minutos</small></span>
+        <button class="button button-primary" id="request-mentorship" type="button">Solicitar mentoría</button>
+    </div>
+</dialog>
+
+<div class="toast" id="app-toast" role="status" aria-live="polite" hidden>
+    <i data-lucide="check-circle-2" aria-hidden="true"></i>
+    <span>Acción completada</span>
+</div>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="./assets/scripts/app.js?v=app-prototype"></script>
+</body>
+</html>
