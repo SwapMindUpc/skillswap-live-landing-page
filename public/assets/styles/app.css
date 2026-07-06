@@ -44,6 +44,7 @@ textarea {
 body {
     color: var(--ink);
     min-width: 320px;
+    overflow-x: hidden;
 }
 
 button,
@@ -647,6 +648,12 @@ svg {
 .button-secondary:hover {
     border-color: var(--teal);
     color: var(--teal);
+}
+
+.button-secondary.is-selected {
+    background: var(--coral-soft);
+    border-color: var(--coral);
+    color: var(--coral);
 }
 
 .button-dark {
@@ -1892,6 +1899,7 @@ select {
 .profile-aside {
     display: grid;
     gap: 0.9rem;
+    min-width: 0;
 }
 
 .editable-tags span {
@@ -2391,6 +2399,17 @@ select {
         top: 62px;
     }
 
+    .topbar > div:first-child,
+    .app-main,
+    .app-view,
+    .profile-layout,
+    .profile-main,
+    .profile-aside,
+    .content-panel {
+        min-width: 0;
+        width: 100%;
+    }
+
     .topbar h1 {
         font-size: 1.25rem;
     }
@@ -2499,6 +2518,12 @@ select {
 
     .profile-identity {
         align-items: flex-start;
+        min-width: 0;
+        width: 100%;
+    }
+
+    .profile-identity > div {
+        min-width: 0;
     }
 
     .profile-avatar {
@@ -2507,7 +2532,15 @@ select {
     }
 
     .availability-grid label {
-        grid-template-columns: 76px auto 1fr;
+        grid-template-columns: minmax(60px, 76px) auto minmax(0, 1fr);
+    }
+
+    .availability-grid small {
+        overflow-wrap: anywhere;
+    }
+
+    .profile-section .panel-heading {
+        flex-wrap: wrap;
     }
 
     .notification-panel {

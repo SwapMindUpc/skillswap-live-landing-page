@@ -62,6 +62,14 @@ const showView = (viewName, updateHistory = true) => {
 
         if (isCurrent) {
             button.setAttribute("aria-current", "page");
+
+            if (window.matchMedia("(max-width: 920px)").matches) {
+                button.scrollIntoView({
+                    behavior: "smooth",
+                    block: "nearest",
+                    inline: "center",
+                });
+            }
         } else {
             button.removeAttribute("aria-current");
         }
