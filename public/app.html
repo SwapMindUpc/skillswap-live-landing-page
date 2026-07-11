@@ -571,7 +571,7 @@
 
                 <div class="mentorship-layout">
                     <div class="session-list">
-                        <article class="session-card" data-session-status="upcoming">
+                        <article class="session-card" data-session-status="upcoming" data-mentorship-id="1">
                             <div class="session-date">
                                 <strong>05</strong>
                                 <span>JUL</span>
@@ -600,6 +600,10 @@
                                         <i data-lucide="video" aria-hidden="true"></i>
                                         Entrar
                                     </button>
+                                    <button class="button button-secondary" type="button" data-session-action="complete">
+                                        <i data-lucide="circle-check-big" aria-hidden="true"></i>
+                                        Completar
+                                    </button>
                                     <button class="button button-secondary" type="button" data-session-action="message">
                                         <i data-lucide="message-circle" aria-hidden="true"></i>
                                         Mensaje
@@ -609,7 +613,7 @@
                             </div>
                         </article>
 
-                        <article class="session-card" data-session-status="upcoming">
+                        <article class="session-card" data-session-status="upcoming" data-mentorship-id="2">
                             <div class="session-date teal-date">
                                 <strong>08</strong>
                                 <span>JUL</span>
@@ -646,7 +650,7 @@
                             </div>
                         </article>
 
-                        <article class="session-card" data-session-status="pending" hidden>
+                        <article class="session-card" data-session-status="pending" data-mentorship-id="3" hidden>
                             <div class="session-date amber-date">
                                 <strong>10</strong>
                                 <span>JUL</span>
@@ -677,7 +681,7 @@
                             </div>
                         </article>
 
-                        <article class="session-card" data-session-status="completed" hidden>
+                        <article class="session-card" data-session-status="completed" data-mentorship-id="4" hidden>
                             <div class="session-date muted-date">
                                 <strong>28</strong>
                                 <span>JUN</span>
@@ -703,6 +707,10 @@
                                     <button class="button button-secondary" type="button" data-session-action="repeat">
                                         <i data-lucide="repeat-2" aria-hidden="true"></i>
                                         Repetir mentoría
+                                    </button>
+                                    <button class="button button-secondary" type="button" data-session-action="review">
+                                        <i data-lucide="star" aria-hidden="true"></i>
+                                        Calificar
                                     </button>
                                 </div>
                             </div>
@@ -1092,6 +1100,52 @@
     </form>
 </dialog>
 
+<dialog class="workflow-dialog" id="chat-dialog">
+    <div class="dialog-heading">
+        <div><span class="eyebrow">Coordinación</span><h2>Chat de la mentoría</h2><p id="chat-session-title">Conversación de la sesión</p></div>
+        <button class="icon-button" type="button" data-workflow-close="chat-dialog" aria-label="Cerrar"><i data-lucide="x" aria-hidden="true"></i></button>
+    </div>
+    <div class="chat-messages" id="chat-messages" aria-live="polite"></div>
+    <form class="chat-form" id="chat-form">
+        <input id="chat-mentorship-id" type="hidden">
+        <label for="chat-message"><span class="sr-only">Mensaje</span><input id="chat-message" type="text" maxlength="280" placeholder="Escribe un mensaje" autocomplete="off" required></label>
+        <button class="button button-primary" type="submit" aria-label="Enviar mensaje"><i data-lucide="send" aria-hidden="true"></i><span>Enviar</span></button>
+    </form>
+</dialog>
+
+<dialog class="workflow-dialog compact-dialog" id="review-dialog">
+    <form id="review-form">
+        <div class="dialog-heading">
+            <div><span class="eyebrow">Sesión completada</span><h2>Califica la mentoría</h2><p>Tu opinión fortalece la confianza de la comunidad.</p></div>
+            <button class="icon-button" type="button" data-workflow-close="review-dialog" aria-label="Cerrar"><i data-lucide="x" aria-hidden="true"></i></button>
+        </div>
+        <input id="review-mentorship-id" type="hidden">
+        <fieldset class="rating-control">
+            <legend>Calificación</legend>
+            <div>
+                <input id="rating-5" type="radio" name="rating" value="5" required><label for="rating-5" title="5 estrellas">★</label>
+                <input id="rating-4" type="radio" name="rating" value="4"><label for="rating-4" title="4 estrellas">★</label>
+                <input id="rating-3" type="radio" name="rating" value="3"><label for="rating-3" title="3 estrellas">★</label>
+                <input id="rating-2" type="radio" name="rating" value="2"><label for="rating-2" title="2 estrellas">★</label>
+                <input id="rating-1" type="radio" name="rating" value="1"><label for="rating-1" title="1 estrella">★</label>
+            </div>
+        </fieldset>
+        <label class="account-field" for="review-text"><span>Reseña</span><textarea id="review-text" rows="4" maxlength="320" placeholder="Describe tu experiencia" required></textarea></label>
+        <div class="dialog-form-message" id="review-message" role="alert" hidden></div>
+        <div class="account-dialog-actions"><button class="button button-secondary" type="button" data-workflow-close="review-dialog">Cancelar</button><button class="button button-primary" type="submit">Publicar reseña</button></div>
+    </form>
+</dialog>
+
+<dialog class="workflow-dialog compact-dialog" id="session-room-dialog">
+    <div class="session-room">
+        <span class="session-room-icon"><i data-lucide="video" aria-hidden="true"></i></span>
+        <span class="eyebrow">Sala virtual</span>
+        <h2>Sesión iniciada</h2>
+        <p>La videollamada se simula dentro del prototipo. El estado de la mentoría quedó registrado como “en curso”.</p>
+        <div class="room-controls"><button class="icon-button" type="button" title="Micrófono"><i data-lucide="mic" aria-hidden="true"></i></button><button class="icon-button" type="button" title="Cámara"><i data-lucide="video" aria-hidden="true"></i></button><button class="icon-button danger-icon" type="button" data-workflow-close="session-room-dialog" title="Salir"><i data-lucide="phone-off" aria-hidden="true"></i></button></div>
+    </div>
+</dialog>
+
 <dialog class="account-dialog compact-dialog" id="skill-dialog">
     <form id="skill-form" novalidate>
         <div class="dialog-heading">
@@ -1160,6 +1214,7 @@
 <script src="https://unpkg.com/lucide@latest"></script>
 <script src="./assets/scripts/store.js?v=story-coverage"></script>
 <script src="./assets/scripts/account.js?v=account-access"></script>
+<script src="./assets/scripts/workflows.js?v=mentorship-workflows"></script>
 <script src="./assets/scripts/app.js?v=app-prototype"></script>
 </body>
 </html>
