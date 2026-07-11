@@ -128,6 +128,8 @@ const revealGroups = [
     [".credits-card > div", 130],
     [".trust-cards .card", 100],
     [".community-grid article", 100],
+    [".contact-intro > *", 90],
+    [".contact-form", 0],
     [".cta > *", 110],
 ];
 
