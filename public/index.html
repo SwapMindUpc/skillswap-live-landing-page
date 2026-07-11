@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/styles/styles.css?v=motion-refresh">
+    <link rel="stylesheet" href="./assets/styles/styles.css?v=contact-final">
 </head>
 <body>
 <a class="skip-link" href="#home">Saltar al contenido</a>
@@ -37,9 +37,10 @@
             <li><a href="#credits">Créditos</a></li>
             <li><a href="#trust">Confianza</a></li>
             <li><a href="#community">Comunidad</a></li>
+            <li><a href="#contact">Contacto</a></li>
         </ul>
 
-        <a href="./app.html#home" class="nav-button">Entrar al prototipo</a>
+        <a href="./auth.html" class="nav-button">Iniciar sesión</a>
     </nav>
 </header>
 
@@ -273,6 +274,49 @@
         </div>
     </section>
 
+    <section id="contact" class="section contact-section">
+        <div class="contact-intro">
+            <span class="eyebrow">Contáctanos</span>
+            <h2>¿Tienes una pregunta o una idea para la comunidad?</h2>
+            <p>
+                Escríbenos si necesitas ayuda con una mentoría, quieres proponer una alianza
+                o deseas compartir una sugerencia sobre SkillSwap Live.
+            </p>
+
+            <div class="contact-details">
+                <a href="mailto:hola@skillswap.live">
+                    <span><i data-lucide="mail" aria-hidden="true"></i></span>
+                    <span><strong>Correo</strong><small>hola@skillswap.live</small></span>
+                </a>
+                <div>
+                    <span><i data-lucide="clock-3" aria-hidden="true"></i></span>
+                    <span><strong>Horario de atención</strong><small>Lunes a viernes · 9:00 a. m. - 6:00 p. m.</small></span>
+                </div>
+                <div>
+                    <span><i data-lucide="map-pin" aria-hidden="true"></i></span>
+                    <span><strong>Comunidad local</strong><small>Lima, Perú · Atención virtual</small></span>
+                </div>
+            </div>
+        </div>
+
+        <form class="contact-form" id="contact-form" novalidate>
+            <div class="contact-form-heading">
+                <span><i data-lucide="messages-square" aria-hidden="true"></i></span>
+                <div><strong>Envíanos un mensaje</strong><small>Responderemos dentro de un día hábil.</small></div>
+            </div>
+
+            <div class="contact-field-grid">
+                <label for="contact-name"><span>Nombre</span><input id="contact-name" name="name" type="text" autocomplete="name" required></label>
+                <label for="contact-email"><span>Correo</span><input id="contact-email" name="email" type="email" autocomplete="email" required></label>
+            </div>
+            <label for="contact-topic"><span>Motivo</span><select id="contact-topic" name="topic" required><option value="">Seleccionar</option><option value="support">Ayuda con la plataforma</option><option value="mentorship">Problema con una mentoría</option><option value="alliance">Alianzas y comunidad</option><option value="suggestion">Sugerencia</option><option value="other">Otro</option></select></label>
+            <label for="contact-message"><span>Mensaje</span><textarea id="contact-message" name="message" rows="5" maxlength="600" required placeholder="Cuéntanos cómo podemos ayudarte"></textarea></label>
+            <label class="contact-consent"><input name="consent" type="checkbox" required><span>Acepto que SkillSwap Live utilice estos datos para responder mi consulta.</span></label>
+            <div class="contact-message" id="contact-form-message" role="alert" hidden></div>
+            <button class="primary-button contact-submit" type="submit">Enviar mensaje <i data-lucide="send" aria-hidden="true"></i></button>
+        </form>
+    </section>
+
     <section id="join" class="cta">
         <span class="eyebrow">Empieza hoy</span>
         <h2>Convierte lo que sabes en tiempo para aprender algo nuevo.</h2>
@@ -280,8 +324,8 @@
             Regístrate, agrega tus habilidades, selecciona intereses y encuentra una micro-mentoría cuando la necesites.
         </p>
         <div class="cta-actions">
-            <a href="./app.html#search" class="primary-button">Explorar mentores</a>
-            <a href="./app.html#credits" class="secondary-button light">Ver mis créditos</a>
+            <a href="./auth.html#register" class="primary-button">Crear mi cuenta</a>
+            <a href="./auth.html" class="secondary-button light">Ya tengo una cuenta</a>
         </div>
     </section>
 </main>
@@ -290,6 +334,9 @@
     <p>© 2026 SkillSwap Live. Todos los derechos reservados.</p>
 </footer>
 
-<script src="./assets/scripts/main.js?v=motion-refresh"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="./assets/scripts/store.js?v=contact-section"></script>
+<script src="./assets/scripts/contact.js?v=contact-section"></script>
+<script src="./assets/scripts/main.js?v=contact-section"></script>
 </body>
 </html>
