@@ -75,6 +75,10 @@
             <i data-lucide="arrow-left" aria-hidden="true"></i>
             Volver a la landing
         </a>
+        <button class="back-link sign-out-button" id="sign-out" type="button">
+            <i data-lucide="log-out" aria-hidden="true"></i>
+            Cerrar sesión
+        </button>
     </aside>
 
     <div class="app-main">
@@ -106,7 +110,7 @@
                     <span aria-hidden="true"></span>
                 </button>
                 <button class="profile-menu" type="button" data-view-target="profile">
-                    <span class="avatar avatar-coral">AM</span>
+                    <span class="avatar avatar-coral" data-current-avatar>AM</span>
                     <span>
                         <strong>Andrea Mendoza</strong>
                         <small>85 créditos</small>
@@ -938,7 +942,7 @@
             <section class="app-view" data-view="profile" aria-labelledby="view-title" hidden>
                 <div class="profile-header">
                     <div class="profile-identity">
-                        <span class="avatar avatar-coral profile-avatar">AM</span>
+                        <span class="avatar avatar-coral profile-avatar" data-current-avatar>AM</span>
                         <div>
                             <span class="eyebrow">Mi perfil</span>
                             <h2>Andrea Mendoza</h2>
@@ -963,7 +967,7 @@
                                     <span class="eyebrow">Lo que compartes</span>
                                     <h2>Habilidades para enseñar</h2>
                                 </div>
-                                <button class="icon-button compact" type="button" aria-label="Agregar habilidad">
+                                <button class="icon-button compact" id="add-teaching-skill" type="button" aria-label="Agregar habilidad">
                                     <i data-lucide="plus" aria-hidden="true"></i>
                                 </button>
                             </div>
@@ -981,7 +985,7 @@
                                     <span class="eyebrow">Lo que buscas</span>
                                     <h2>Intereses de aprendizaje</h2>
                                 </div>
-                                <button class="icon-button compact" type="button" aria-label="Agregar interés">
+                                <button class="icon-button compact" id="add-learning-interest" type="button" aria-label="Agregar interés">
                                     <i data-lucide="plus" aria-hidden="true"></i>
                                 </button>
                             </div>
@@ -1054,6 +1058,59 @@
     </div>
 </div>
 
+<dialog class="account-dialog" id="profile-dialog">
+    <form id="profile-form" novalidate>
+        <div class="dialog-heading">
+            <div>
+                <span class="eyebrow">Datos personales</span>
+                <h2>Editar perfil</h2>
+                <p>Esta información será visible para otros usuarios.</p>
+            </div>
+            <button class="icon-button" type="button" data-close-dialog="profile-dialog" aria-label="Cerrar">
+                <i data-lucide="x" aria-hidden="true"></i>
+            </button>
+        </div>
+
+        <label class="photo-control" for="profile-photo">
+            <span class="avatar avatar-coral profile-avatar" id="profile-photo-preview">AM</span>
+            <span><strong>Foto de perfil</strong><small>JPG, PNG o WEBP. Máximo 2 MB.</small></span>
+            <span class="button button-secondary">Seleccionar</span>
+            <input id="profile-photo" type="file" accept="image/jpeg,image/png,image/webp">
+        </label>
+
+        <div class="account-field-grid">
+            <label class="account-field" for="profile-name"><span>Nombre completo</span><input id="profile-name" name="name" type="text" required></label>
+            <label class="account-field" for="profile-district"><span>Distrito</span><select id="profile-district" name="district" required><option>Surco</option><option>Miraflores</option><option>San Borja</option><option>San Isidro</option><option>La Molina</option><option>Otro</option></select></label>
+        </div>
+        <label class="account-field" for="profile-email"><span>Correo electrónico</span><input id="profile-email" name="email" type="email" required></label>
+        <label class="account-field" for="profile-bio"><span>Presentación</span><textarea id="profile-bio" name="bio" rows="4" maxlength="240" placeholder="Cuéntale a la comunidad qué sabes y cómo te gusta enseñar"></textarea></label>
+        <div class="dialog-form-message" id="profile-form-message" role="alert" hidden></div>
+        <div class="account-dialog-actions">
+            <button class="button button-secondary" type="button" data-close-dialog="profile-dialog">Cancelar</button>
+            <button class="button button-primary" type="submit">Guardar perfil</button>
+        </div>
+    </form>
+</dialog>
+
+<dialog class="account-dialog compact-dialog" id="skill-dialog">
+    <form id="skill-form" novalidate>
+        <div class="dialog-heading">
+            <div>
+                <span class="eyebrow" id="skill-dialog-eyebrow">Perfil</span>
+                <h2 id="skill-dialog-title">Agregar habilidad</h2>
+            </div>
+            <button class="icon-button" type="button" data-close-dialog="skill-dialog" aria-label="Cerrar"><i data-lucide="x" aria-hidden="true"></i></button>
+        </div>
+        <input id="skill-kind" type="hidden" value="teach">
+        <label class="account-field" for="skill-name"><span id="skill-field-label">Nombre de la habilidad</span><input id="skill-name" type="text" maxlength="40" autocomplete="off" required></label>
+        <div class="dialog-form-message" id="skill-form-message" role="alert" hidden></div>
+        <div class="account-dialog-actions">
+            <button class="button button-secondary" type="button" data-close-dialog="skill-dialog">Cancelar</button>
+            <button class="button button-primary" type="submit">Agregar</button>
+        </div>
+    </form>
+</dialog>
+
 <dialog class="mentor-dialog" id="mentor-dialog">
     <form method="dialog">
         <button class="icon-button dialog-close" type="submit" aria-label="Cerrar">
@@ -1102,6 +1159,7 @@
 
 <script src="https://unpkg.com/lucide@latest"></script>
 <script src="./assets/scripts/store.js?v=story-coverage"></script>
+<script src="./assets/scripts/account.js?v=account-access"></script>
 <script src="./assets/scripts/app.js?v=app-prototype"></script>
 </body>
 </html>

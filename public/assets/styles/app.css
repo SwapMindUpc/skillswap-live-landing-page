@@ -255,6 +255,12 @@ svg {
     color: #ffffff;
 }
 
+.sign-out-button {
+    background: transparent;
+    border: 0;
+    text-align: left;
+}
+
 .app-main {
     min-width: 0;
 }
@@ -2075,6 +2081,7 @@ select {
     margin-top: 0.1rem;
 }
 
+.account-dialog,
 .mentor-dialog {
     background: #ffffff;
     border: 1px solid var(--line);
@@ -2089,9 +2096,144 @@ select {
     width: 520px;
 }
 
+.account-dialog {
+    width: 620px;
+}
+
+.account-dialog.compact-dialog {
+    width: 440px;
+}
+
+.account-dialog::backdrop,
 .mentor-dialog::backdrop {
     background: rgba(15, 26, 31, 0.64);
     backdrop-filter: blur(4px);
+}
+
+.dialog-heading {
+    align-items: flex-start;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.dialog-heading h2 {
+    font-family: "Newsreader", Georgia, serif;
+    font-size: 1.6rem;
+}
+
+.dialog-heading p {
+    color: var(--muted);
+    font-size: 0.65rem;
+    margin-top: 0.25rem;
+}
+
+.photo-control {
+    align-items: center;
+    background: var(--paper);
+    border: 1px dashed #b8c7c1;
+    border-radius: var(--radius);
+    cursor: pointer;
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: auto 1fr auto;
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+}
+
+.photo-control > span:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+}
+
+.photo-control strong {
+    font-size: 0.68rem;
+}
+
+.photo-control small {
+    color: var(--muted);
+    font-size: 0.58rem;
+    margin-top: 0.12rem;
+}
+
+.photo-control input {
+    height: 1px;
+    opacity: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.account-field-grid {
+    display: grid;
+    gap: 0.7rem;
+    grid-template-columns: 1fr 1fr;
+}
+
+.account-field {
+    display: grid;
+    gap: 0.35rem;
+    margin-bottom: 0.75rem;
+}
+
+.account-field > span {
+    font-size: 0.62rem;
+    font-weight: 800;
+}
+
+.account-field input,
+.account-field select,
+.account-field textarea {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    color: var(--ink);
+    font-size: 0.68rem;
+    min-height: 42px;
+    padding: 0.65rem 0.7rem;
+    width: 100%;
+}
+
+.account-field textarea {
+    line-height: 1.5;
+    resize: vertical;
+}
+
+.account-field input:focus,
+.account-field select:focus,
+.account-field textarea:focus {
+    border-color: var(--teal);
+    box-shadow: 0 0 0 4px rgba(47, 143, 145, 0.1);
+    outline: 0;
+}
+
+.dialog-form-message {
+    background: var(--coral-soft);
+    border: 1px solid #f2c7bf;
+    border-radius: var(--radius);
+    color: var(--danger);
+    font-size: 0.62rem;
+    margin-bottom: 0.75rem;
+    padding: 0.65rem;
+}
+
+.dialog-form-message[hidden] {
+    display: none;
+}
+
+.dialog-form-message.is-success {
+    background: var(--mint-soft);
+    border-color: #b4e8c2;
+    color: #24723e;
+}
+
+.account-dialog-actions {
+    border-top: 1px solid var(--line);
+    display: flex;
+    gap: 0.55rem;
+    justify-content: flex-end;
+    margin-top: 0.4rem;
+    padding-top: 0.9rem;
 }
 
 .dialog-close {
@@ -2252,6 +2394,10 @@ select {
 
 .toast svg {
     color: var(--mint);
+}
+
+.toast.is-error svg {
+    color: var(--coral);
 }
 
 @keyframes view-enter {
@@ -2546,6 +2692,19 @@ select {
     .notification-panel {
         right: 1rem;
         top: 60px;
+    }
+
+    .account-field-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .photo-control {
+        grid-template-columns: auto 1fr;
+    }
+
+    .photo-control .button {
+        grid-column: 1 / -1;
+        width: 100%;
     }
 }
 

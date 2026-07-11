@@ -354,21 +354,6 @@ document.querySelector("#copy-invite")?.addEventListener("click", async () => {
     }
 });
 
-document.querySelector("#edit-profile")?.addEventListener("click", () => {
-    showToast("Modo de edición activado");
-});
-
-document.querySelector("#save-availability")?.addEventListener("click", () => {
-    showToast("Disponibilidad actualizada");
-});
-
-document.querySelectorAll(".editable-tags button").forEach((button) => {
-    button.addEventListener("click", () => {
-        button.closest("span")?.remove();
-        showToast("Elemento eliminado del perfil");
-    });
-});
-
 const safetyMessages = {
     places: "Mapa de lugares seguros disponible en el prototipo completo",
     blocked: "No tienes usuarios bloqueados",
