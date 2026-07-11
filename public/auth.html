@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Registro e inicio de sesión de SkillSwap Live.">
+    <title>Acceder | SkillSwap Live</title>
+
+    <link rel="icon" type="image/png" href="./assets/images/logo.png?v=account-access">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,700&display=swap"
+        rel="stylesheet"
+    >
+    <link rel="stylesheet" href="./assets/styles/auth.css?v=account-access">
+</head>
+<body>
+<main class="auth-shell">
+    <section class="auth-story" aria-labelledby="auth-story-title">
+        <a class="auth-brand" href="./index.html">
+            <img src="./assets/images/logo.png" alt="">
+            <span><strong>SkillSwap</strong><small>Live</small></span>
+        </a>
+
+        <div class="story-content">
+            <span class="eyebrow">Aprender también es compartir</span>
+            <h1 id="auth-story-title">Convierte lo que sabes en tiempo para aprender.</h1>
+            <p>Una sola cuenta te permite enseñar, solicitar ayuda y construir reputación dentro de la comunidad.</p>
+
+            <div class="story-paths">
+                <article>
+                    <span><i data-lucide="graduation-cap" aria-hidden="true"></i></span>
+                    <div><strong>Quiero aprender</strong><small>Encuentra mentores por habilidad, horario y modalidad.</small></div>
+                </article>
+                <article>
+                    <span><i data-lucide="hand-helping" aria-hidden="true"></i></span>
+                    <div><strong>Quiero enseñar</strong><small>Comparte una habilidad y gana créditos de tiempo.</small></div>
+                </article>
+            </div>
+        </div>
+
+        <p class="story-note"><i data-lucide="shield-check" aria-hidden="true"></i> Perfiles, reseñas y herramientas de seguridad visibles.</p>
+    </section>
+
+    <section class="auth-workspace" aria-label="Acceso a la cuenta">
+        <a class="mobile-brand" href="./index.html">
+            <img src="./assets/images/logo.png" alt="">
+            <strong>SkillSwap Live</strong>
+        </a>
+
+        <div class="auth-panel">
+            <div class="auth-tabs" role="tablist" aria-label="Tipo de acceso">
+                <button type="button" class="is-active" role="tab" aria-selected="true" data-auth-tab="login">Iniciar sesión</button>
+                <button type="button" role="tab" aria-selected="false" data-auth-tab="register">Crear cuenta</button>
+            </div>
+
+            <section class="auth-view is-visible" data-auth-view="login">
+                <div class="auth-heading">
+                    <span class="eyebrow">Bienvenido de vuelta</span>
+                    <h2>Continúa tu intercambio</h2>
+                    <p>Ingresa con el correo asociado a tu cuenta.</p>
+                </div>
+
+                <form id="login-form" novalidate>
+                    <label class="field" for="login-email">
+                        <span>Correo electrónico</span>
+                        <span class="input-control">
+                            <i data-lucide="mail" aria-hidden="true"></i>
+                            <input id="login-email" name="email" type="email" autocomplete="email" placeholder="nombre@correo.com" required>
+                        </span>
+                        <small class="field-error"></small>
+                    </label>
+
+                    <label class="field" for="login-password">
+                        <span>Contraseña</span>
+                        <span class="input-control">
+                            <i data-lucide="lock-keyhole" aria-hidden="true"></i>
+                            <input id="login-password" name="password" type="password" autocomplete="current-password" placeholder="Tu contraseña" required>
+                            <button class="password-toggle" type="button" data-password-target="login-password" aria-label="Mostrar contraseña">
+                                <i data-lucide="eye" aria-hidden="true"></i>
+                            </button>
+                        </span>
+                        <small class="field-error"></small>
+                    </label>
+
+                    <div class="form-row">
+                        <label class="check-control"><input type="checkbox" name="remember"><span>Recordarme</span></label>
+                        <button class="link-button" type="button" id="recover-password">Recuperar contraseña</button>
+                    </div>
+
+                    <div class="form-message" id="login-message" role="alert" hidden></div>
+                    <button class="primary-action" type="submit">Ingresar <i data-lucide="arrow-right" aria-hidden="true"></i></button>
+                    <button class="demo-action" type="button" id="demo-login">
+                        <i data-lucide="sparkles" aria-hidden="true"></i>
+                        Usar cuenta de demostración
+                    </button>
+                </form>
+            </section>
+
+            <section class="auth-view" data-auth-view="register" hidden>
+                <div class="auth-heading">
+                    <span class="eyebrow">Nueva cuenta</span>
+                    <h2>Empieza a compartir</h2>
+                    <p>Completa tus datos básicos. Después podrás agregar habilidades e intereses.</p>
+                </div>
+
+                <form id="register-form" novalidate>
+                    <div class="field-pair">
+                        <label class="field" for="register-name">
+                            <span>Nombre completo</span>
+                            <span class="input-control"><i data-lucide="user-round" aria-hidden="true"></i><input id="register-name" name="name" type="text" autocomplete="name" required></span>
+                            <small class="field-error"></small>
+                        </label>
+                        <label class="field" for="register-district">
+                            <span>Distrito</span>
+                            <span class="input-control select-control">
+                                <i data-lucide="map-pin" aria-hidden="true"></i>
+                                <select id="register-district" name="district" required>
+                                    <option value="">Seleccionar</option>
+                                    <option>Surco</option>
+                                    <option>Miraflores</option>
+                                    <option>San Borja</option>
+                                    <option>San Isidro</option>
+                                    <option>La Molina</option>
+                                    <option>Otro</option>
+                                </select>
+                            </span>
+                            <small class="field-error"></small>
+                        </label>
+                    </div>
+
+                    <label class="field" for="register-email">
+                        <span>Correo electrónico</span>
+                        <span class="input-control"><i data-lucide="mail" aria-hidden="true"></i><input id="register-email" name="email" type="email" autocomplete="email" required></span>
+                        <small class="field-error"></small>
+                    </label>
+
+                    <label class="field" for="register-password">
+                        <span>Contraseña</span>
+                        <span class="input-control">
+                            <i data-lucide="lock-keyhole" aria-hidden="true"></i>
+                            <input id="register-password" name="password" type="password" autocomplete="new-password" minlength="6" required>
+                            <button class="password-toggle" type="button" data-password-target="register-password" aria-label="Mostrar contraseña"><i data-lucide="eye" aria-hidden="true"></i></button>
+                        </span>
+                        <small class="field-hint">Mínimo 6 caracteres.</small>
+                        <small class="field-error"></small>
+                    </label>
+
+                    <label class="check-control terms-control">
+                        <input id="register-terms" name="terms" type="checkbox" required>
+                        <span>Acepto los términos de uso y la política de privacidad del prototipo.</span>
+                    </label>
+
+                    <div class="form-message" id="register-message" role="alert" hidden></div>
+                    <button class="primary-action" type="submit">Crear mi cuenta <i data-lucide="arrow-right" aria-hidden="true"></i></button>
+                </form>
+            </section>
+
+            <a class="back-home" href="./index.html"><i data-lucide="arrow-left" aria-hidden="true"></i> Volver a la landing</a>
+        </div>
+    </section>
+</main>
+
+<div class="toast" id="auth-toast" role="status" aria-live="polite" hidden>
+    <i data-lucide="check-circle-2" aria-hidden="true"></i>
+    <span></span>
+</div>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="./assets/scripts/store.js?v=account-access"></script>
+<script src="./assets/scripts/auth.js?v=account-access"></script>
+</body>
+</html>
