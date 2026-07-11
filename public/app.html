@@ -16,7 +16,7 @@
         href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,700&display=swap"
         rel="stylesheet"
     >
-    <link rel="stylesheet" href="./assets/styles/app.css?v=app-prototype">
+    <link rel="stylesheet" href="./assets/styles/app.css?v=workflow-experience">
 </head>
 <body>
 <a class="skip-link" href="#app-content">Saltar al contenido</a>
@@ -1120,8 +1120,8 @@
 </dialog>
 
 <dialog class="workflow-dialog" id="chat-dialog">
-    <div class="dialog-heading">
-        <div><span class="eyebrow">Coordinación</span><h2>Chat de la mentoría</h2><p id="chat-session-title">Conversación de la sesión</p></div>
+    <div class="dialog-heading chat-heading">
+        <div class="chat-heading-copy"><span class="eyebrow">Coordinación</span><h2>Chat de la mentoría</h2><p id="chat-session-title">Conversación de la sesión</p><span class="chat-presence"><i aria-hidden="true"></i> Conversación disponible</span></div>
         <button class="icon-button" type="button" data-workflow-close="chat-dialog" aria-label="Cerrar"><i data-lucide="x" aria-hidden="true"></i></button>
     </div>
     <div class="chat-messages" id="chat-messages" aria-live="polite"></div>
@@ -1155,13 +1155,30 @@
     </form>
 </dialog>
 
-<dialog class="workflow-dialog compact-dialog" id="session-room-dialog">
-    <div class="session-room">
-        <span class="session-room-icon"><i data-lucide="video" aria-hidden="true"></i></span>
-        <span class="eyebrow">Sala virtual</span>
-        <h2>Sesión iniciada</h2>
-        <p>La videollamada se simula dentro del prototipo. El estado de la mentoría quedó registrado como “en curso”.</p>
-        <div class="room-controls"><button class="icon-button" type="button" title="Micrófono"><i data-lucide="mic" aria-hidden="true"></i></button><button class="icon-button" type="button" title="Cámara"><i data-lucide="video" aria-hidden="true"></i></button><button class="icon-button danger-icon" type="button" data-workflow-close="session-room-dialog" title="Salir"><i data-lucide="phone-off" aria-hidden="true"></i></button></div>
+<dialog class="workflow-dialog" id="session-room-dialog">
+    <div class="video-room-shell">
+        <header class="video-room-header">
+            <div><span class="room-live-dot" aria-hidden="true"></span><span><strong>Python para análisis de datos</strong><small>Sala virtual · Sesión en curso</small></span></div>
+            <div><span class="room-timer" id="room-timer">00:00</span><button class="icon-button room-close" type="button" data-workflow-close="session-room-dialog" aria-label="Cerrar sala"><i data-lucide="x" aria-hidden="true"></i></button></div>
+        </header>
+        <div class="video-stage">
+            <div class="remote-participant">
+                <span class="video-avatar">JP</span>
+                <div class="participant-label"><span class="status-dot"></span><strong>José Paredes</strong><small>Mentor</small></div>
+            </div>
+            <div class="self-preview">
+                <span>AM</span>
+                <small>Tú</small>
+            </div>
+        </div>
+        <footer class="video-room-footer">
+            <p><i data-lucide="shield-check" aria-hidden="true"></i> La sala es una simulación funcional del prototipo.</p>
+            <div class="room-controls">
+                <button class="room-control" type="button" data-room-control="mic" aria-pressed="false" title="Silenciar micrófono"><i data-lucide="mic" aria-hidden="true"></i><span>Micrófono</span></button>
+                <button class="room-control" type="button" data-room-control="camera" aria-pressed="false" title="Apagar cámara"><i data-lucide="video" aria-hidden="true"></i><span>Cámara</span></button>
+                <button class="room-control leave-control" type="button" data-workflow-close="session-room-dialog" title="Salir de la sesión"><i data-lucide="phone-off" aria-hidden="true"></i><span>Salir</span></button>
+            </div>
+        </footer>
     </div>
 </dialog>
 
@@ -1289,7 +1306,7 @@
 <script src="https://unpkg.com/lucide@latest"></script>
 <script src="./assets/scripts/store.js?v=story-coverage"></script>
 <script src="./assets/scripts/account.js?v=account-access"></script>
-<script src="./assets/scripts/workflows.js?v=mentorship-workflows"></script>
+<script src="./assets/scripts/workflows.js?v=workflow-experience"></script>
 <script src="./assets/scripts/app.js?v=app-prototype"></script>
 <script src="./assets/scripts/community-safety.js?v=community-safety"></script>
 </body>

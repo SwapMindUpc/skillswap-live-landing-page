@@ -6,6 +6,8 @@ const reviewDialog = document.querySelector("#review-dialog");
 const sessionRoomDialog = document.querySelector("#session-room-dialog");
 let workflowCurrentUser;
 let workflowToastTimer;
+let roomTimerInterval;
+let roomStartedAt;
 
 const showWorkflowToast = (message, isError = false) => {
     window.clearTimeout(workflowToastTimer);
@@ -21,6 +23,22 @@ const showWorkflowToast = (message, isError = false) => {
 };
 
 const refreshWorkflowIcons = () => window.lucide?.createIcons();
+
+const startRoomTimer = () => {
+    window.clearInterval(roomTimerInterval);
+    roomStartedAt = Date.now();
+
+    const updateTimer = () => {
+        const elapsedSeconds = Math.floor((Date.now() - roomStartedAt) / 1000);
+        const minutes = String(Math.floor(elapsedSeconds / 60)).padStart(2, "0");
+        const seconds = String(elapsedSeconds % 60).padStart(2, "0");
+        const timer = document.querySelector("#room-timer");
+        if (timer) timer.textContent = `${minutes}:${seconds}`;
+    };
+
+    updateTimer();
+    roomTimerInterval = window.setInterval(updateTimer, 1000);
+};
 
 const getWorkflowUser = async () => {
     if (workflowCurrentUser) return workflowCurrentUser;
@@ -320,6 +338,7 @@ document.querySelectorAll("[data-session-action]").forEach((button) => {
             if (action === "join") {
                 await workflowStore.update("mentorships", context.mentorshipId, { status: "in_progress", startedAt: new Date().toISOString() });
                 sessionRoomDialog.showModal();
+                startRoomTimer();
             }
             if (action === "attendance") {
                 await workflowStore.update("mentorships", context.mentorshipId, { attendanceConfirmed: true });
@@ -382,7 +401,26 @@ document.querySelector("#review-form")?.addEventListener("submit", async (event)
 });
 
 document.querySelectorAll("[data-workflow-close]").forEach((button) => {
-    button.addEventListener("click", () => document.querySelector(`#${button.dataset.workflowClose}`)?.close());
+    button.addEventListener("click", () => {
+        document.querySelector(`#${button.dataset.workflowClose}`)?.close();
+
+        if (button.dataset.workflowClose === "session-room-dialog") {
+            window.clearInterval(roomTimerInterval);
+        }
+    });
+});
+
+document.querySelectorAll("[data-room-control]").forEach((button) => {
+    button.addEventListener("click", () => {
+        const isOff = button.classList.toggle("is-off");
+        const isMicrophone = button.dataset.roomControl === "mic";
+        button.setAttribute("aria-pressed", String(isOff));
+        button.setAttribute("title", isOff
+            ? `Activar ${isMicrophone ? "micrófono" : "cámara"}`
+            : `Apagar ${isMicrophone ? "micrófono" : "cámara"}`);
+        button.innerHTML = `<i data-lucide="${isMicrophone ? (isOff ? "mic-off" : "mic") : (isOff ? "video-off" : "video")}" aria-hidden="true"></i><span>${isMicrophone ? "Micrófono" : "Cámara"}</span>`;
+        refreshWorkflowIcons();
+    });
 });
 
 const ensureReminders = async () => {

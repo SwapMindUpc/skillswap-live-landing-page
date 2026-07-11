@@ -747,6 +747,202 @@ img {
     }
 }
 
+.contact-section {
+    align-items: start;
+    border-top: 1px solid rgba(34, 87, 122, 0.14);
+    display: grid;
+    gap: clamp(2rem, 6vw, 5rem);
+    grid-template-columns: minmax(0, 0.85fr) minmax(420px, 1.15fr);
+}
+
+.contact-intro h2 {
+    font-family: "Newsreader", Georgia, serif;
+    font-size: clamp(2.35rem, 4.5vw, 4.4rem);
+    line-height: 0.98;
+}
+
+.contact-intro > p {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin-top: 1rem;
+}
+
+.contact-details {
+    display: grid;
+    gap: 0.65rem;
+    margin-top: 1.5rem;
+}
+
+.contact-details > a,
+.contact-details > div {
+    align-items: center;
+    border-bottom: 1px solid var(--line);
+    display: grid;
+    gap: 0.7rem;
+    grid-template-columns: auto 1fr;
+    padding: 0.7rem 0;
+}
+
+.contact-details > a > span:first-child,
+.contact-details > div > span:first-child,
+.contact-form-heading > span {
+    align-items: center;
+    background: rgba(56, 163, 165, 0.13);
+    border-radius: var(--radius);
+    color: var(--teal);
+    display: flex;
+    height: 38px;
+    justify-content: center;
+    width: 38px;
+}
+
+.contact-details > a > span:last-child,
+.contact-details > div > span:last-child,
+.contact-form-heading > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-details strong,
+.contact-form-heading strong {
+    font-size: 0.72rem;
+}
+
+.contact-details small,
+.contact-form-heading small {
+    color: var(--muted);
+    font-size: 0.62rem;
+    line-height: 1.45;
+    margin-top: 0.12rem;
+}
+
+.contact-form {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: 0 18px 46px rgba(23, 32, 38, 0.08);
+    display: grid;
+    gap: 0.8rem;
+    padding: clamp(1rem, 3vw, 1.5rem);
+}
+
+.contact-form-heading {
+    align-items: center;
+    border-bottom: 1px solid var(--line);
+    display: grid;
+    gap: 0.7rem;
+    grid-template-columns: auto 1fr;
+    margin-bottom: 0.2rem;
+    padding-bottom: 0.9rem;
+}
+
+.contact-field-grid {
+    display: grid;
+    gap: 0.7rem;
+    grid-template-columns: 1fr 1fr;
+}
+
+.contact-form > label,
+.contact-field-grid label {
+    display: grid;
+    gap: 0.35rem;
+}
+
+.contact-form label > span:first-child,
+.contact-field-grid label > span:first-child {
+    color: var(--ink);
+    font-size: 0.63rem;
+    font-weight: 800;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+    background: #fbfdfc;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    color: var(--ink);
+    font-size: 0.7rem;
+    min-height: 44px;
+    padding: 0.65rem 0.7rem;
+    width: 100%;
+}
+
+.contact-form textarea {
+    line-height: 1.5;
+    resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+    border-color: var(--teal);
+    box-shadow: 0 0 0 4px rgba(56, 163, 165, 0.1);
+    outline: 0;
+}
+
+.contact-consent {
+    align-items: flex-start;
+    color: var(--muted);
+    display: flex !important;
+    font-size: 0.6rem;
+    gap: 0.45rem;
+    line-height: 1.45;
+}
+
+.contact-consent input {
+    accent-color: var(--teal);
+    min-height: auto;
+    margin-top: 0.12rem;
+    width: auto;
+}
+
+.contact-message {
+    background: var(--coral-soft, #ffebe6);
+    border: 1px solid #f2c7bf;
+    border-radius: var(--radius);
+    color: #9d3c31;
+    font-size: 0.62rem;
+    padding: 0.65rem;
+}
+
+.contact-message[hidden] {
+    display: none;
+}
+
+.contact-message[data-type="success"] {
+    background: rgba(128, 237, 153, 0.22);
+    border-color: rgba(56, 163, 165, 0.3);
+    color: #24723e;
+}
+
+.contact-submit {
+    gap: 0.45rem;
+    justify-self: start;
+}
+
+.contact-submit:disabled {
+    cursor: wait;
+    opacity: 0.65;
+}
+
+@media (max-width: 900px) {
+    .contact-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 560px) {
+    .contact-field-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-submit {
+        width: 100%;
+    }
+}
+
 /* Motion system */
 :root {
     --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
