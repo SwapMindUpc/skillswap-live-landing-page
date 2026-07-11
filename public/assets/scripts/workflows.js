@@ -269,6 +269,13 @@ const completeSession = async (context) => {
     const mentorship = context.mentorship;
     const mentor = await workflowStore.get("users", mentorship.mentorId);
     const confirmations = [...new Set([mentorship.mentorId, mentorship.learnerId])];
+    const nextSessionCount = (mentor.sessions || 0) + 1;
+    const participationBonus = nextSessionCount % 5 === 0 ? 10 : 0;
+
+    if (mentorship.status === "completed") {
+        showWorkflowToast("Esta mentoría ya fue completada", true);
+        return;
+    }
 
     await workflowStore.update("mentorships", mentorship.id, {
         status: "completed",
@@ -276,8 +283,8 @@ const completeSession = async (context) => {
         completedAt: new Date().toISOString(),
     });
     await workflowStore.update("users", mentor.id, {
-        credits: mentor.credits + mentorship.credits,
-        sessions: (mentor.sessions || 0) + 1,
+        credits: mentor.credits + mentorship.credits + participationBonus,
+        sessions: nextSessionCount,
     });
     await workflowStore.create("transactions", {
         userId: mentor.id,
@@ -287,9 +294,21 @@ const completeSession = async (context) => {
         relatedUser: "SkillSwap Live",
         createdAt: new Date().toISOString(),
     });
+    if (participationBonus) {
+        await workflowStore.create("transactions", {
+            userId: mentor.id,
+            type: "bonus",
+            amount: participationBonus,
+            description: `Bonificación por ${nextSessionCount} mentorías completadas`,
+            relatedUser: "SkillSwap Live",
+            createdAt: new Date().toISOString(),
+        });
+    }
     await createNotification(mentor.id, "credits", "Créditos recibidos", `Ganaste ${mentorship.credits} créditos por completar la mentoría.`);
     context.card.dataset.sessionStatus = "completed";
-    showWorkflowToast("Mentoría completada y créditos asignados");
+    showWorkflowToast(participationBonus
+        ? `Mentoría completada: ${mentorship.credits} créditos + ${participationBonus} de bonificación`
+        : "Mentoría completada y créditos asignados");
 };
 
 const repeatSession = async (context) => {
