@@ -248,6 +248,14 @@ document.querySelectorAll(".mentor-details-button").forEach((button) => {
         const card = button.closest(".mentor-card");
         const name = card?.dataset.name ?? card?.querySelector("h3")?.textContent ?? "Mentor";
         const skill = card?.dataset.skill ?? card?.querySelector("p")?.textContent ?? "";
+        const mentorIdsByName = {
+            "José Paredes": "2",
+            "Grecia Ascarza": "3",
+            "Jhoel Armas": "4",
+            "Lucía Velarde": "5",
+            "Mariana Torres": "6",
+            "Jeferson Contreras": "7",
+        };
         const initials = name
             .split(" ")
             .slice(0, 2)
@@ -261,6 +269,7 @@ document.querySelectorAll(".mentor-details-button").forEach((button) => {
         if (dialogName) dialogName.textContent = name;
         if (dialogSkill) dialogSkill.textContent = skill;
         if (dialogAvatar) dialogAvatar.textContent = initials;
+        mentorDialog.dataset.mentorId = card?.dataset.mentorId || mentorIdsByName[name] || "2";
         mentorDialog?.showModal();
     });
 });
@@ -271,11 +280,6 @@ document.querySelectorAll(".time-options button").forEach((button) => {
             item.classList.toggle("is-selected", item === button);
         });
     });
-});
-
-document.querySelector("#request-mentorship")?.addEventListener("click", () => {
-    mentorDialog?.close();
-    showToast("Solicitud enviada. Te avisaremos cuando el mentor responda");
 });
 
 const sessionFilterButtons = document.querySelectorAll("[data-session-filter]");
@@ -294,23 +298,6 @@ sessionFilterButtons.forEach((button) => {
         sessionCards.forEach((card) => {
             card.hidden = card.dataset.sessionStatus !== filter;
         });
-    });
-});
-
-const sessionMessages = {
-    join: "Abriendo la sala virtual",
-    details: "Mostrando detalles de la mentoría",
-    message: "Conversación abierta",
-    cancel: "Solicitud de cancelación registrada",
-    attendance: "Asistencia confirmada",
-    accept: "Mentoría aceptada",
-    reject: "Solicitud rechazada",
-    repeat: "Nueva solicitud preparada",
-};
-
-document.querySelectorAll("[data-session-action]").forEach((button) => {
-    button.addEventListener("click", () => {
-        showToast(sessionMessages[button.dataset.sessionAction] ?? "Acción completada");
     });
 });
 

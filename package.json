@@ -6,7 +6,7 @@
   "scripts": {
     "api": "json-server db.json --port 3000",
     "validate:data": "node -e \"JSON.parse(require('fs').readFileSync('db.json','utf8')); console.log('db.json valid')\"",
-    "test": "npm run validate:data && node --check public/assets/scripts/store.js && node --check public/assets/scripts/auth.js && node --check public/assets/scripts/account.js && node --check public/assets/scripts/app.js && node --check public/assets/scripts/main.js"
+    "test": "npm run validate:data && node --check public/assets/scripts/store.js && node --check public/assets/scripts/auth.js && node --check public/assets/scripts/account.js && node --check public/assets/scripts/workflows.js && node --check public/assets/scripts/app.js && node --check public/assets/scripts/main.js"
   },
   "private": true,
   "devDependencies": {
