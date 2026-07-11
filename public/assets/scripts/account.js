@@ -270,3 +270,8 @@ document.querySelector("#sign-out")?.addEventListener("click", () => {
 loadCurrentUser().catch((error) => {
     showAccountToast(error.message || "No se pudo cargar la cuenta", true);
 });
+
+window.addEventListener("skillswap:account-updated", async () => {
+    currentAccountUser = await accountStore.getCurrentUser();
+    renderCurrentUser();
+});
