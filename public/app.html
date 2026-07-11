@@ -16,7 +16,7 @@
         href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,700&display=swap"
         rel="stylesheet"
     >
-    <link rel="stylesheet" href="./assets/styles/app.css?v=workflow-experience">
+    <link rel="stylesheet" href="./assets/styles/app.css?v=release-final">
 </head>
 <body>
 <a class="skip-link" href="#app-content">Saltar al contenido</a>
@@ -756,7 +756,7 @@
 
                 <div class="community-layout">
                     <div class="community-feed">
-                        <article class="feed-card">
+                        <article class="feed-card" data-achievement-id="1">
                             <div class="feed-author">
                                 <span class="avatar avatar-teal">GA</span>
                                 <span>
@@ -788,7 +788,7 @@
                             </div>
                         </article>
 
-                        <article class="feed-card">
+                        <article class="feed-card" data-achievement-id="2">
                             <div class="feed-author">
                                 <span class="avatar avatar-blue">JP</span>
                                 <span>
@@ -842,6 +842,14 @@
                                 <li><span>03</span><div><strong>Inglés</strong><small>103 búsquedas</small></div><i data-lucide="minus" aria-hidden="true"></i></li>
                                 <li><span>04</span><div><strong>Figma</strong><small>87 búsquedas</small></div><i data-lucide="trending-up" aria-hidden="true"></i></li>
                             </ol>
+                        </section>
+
+                        <section class="content-panel nearby-panel">
+                            <div class="panel-heading">
+                                <div><span class="eyebrow">Cerca de ti</span><h2>Personas disponibles</h2></div>
+                                <i data-lucide="navigation" aria-hidden="true"></i>
+                            </div>
+                            <div class="nearby-list" id="nearby-users"></div>
                         </section>
 
                         <section class="invite-panel">
@@ -1039,6 +1047,10 @@
                                 <li class="is-done"><i data-lucide="check-circle-2" aria-hidden="true"></i><span><strong>Identidad verificada</strong><small>Documento validado</small></span></li>
                                 <li><i data-lucide="circle" aria-hidden="true"></i><span><strong>Teléfono pendiente</strong><small>Mejora la recuperación</small></span></li>
                             </ul>
+                            <button class="button button-secondary full-width-button" id="verify-identity" type="button">
+                                <i data-lucide="scan-face" aria-hidden="true"></i>
+                                Verificar identidad
+                            </button>
                         </section>
 
                         <section class="content-panel safety-actions">
@@ -1058,6 +1070,13 @@
                                 <span><strong>Reportar un incidente</strong><small>Recibe ayuda del equipo</small></span>
                                 <i data-lucide="chevron-right" aria-hidden="true"></i>
                             </button>
+                        </section>
+
+                        <section class="content-panel feedback-panel">
+                            <span class="eyebrow">Mejora continua</span>
+                            <h2>Ayúdanos a mejorar</h2>
+                            <p>Comparte tu experiencia o propón una nueva función para SkillSwap Live.</p>
+                            <div><button class="button button-secondary" type="button" data-feedback-kind="feedback">Dar feedback</button><button class="button button-secondary" type="button" data-feedback-kind="suggestion">Enviar sugerencia</button></div>
                         </section>
                     </aside>
                 </div>
@@ -1205,6 +1224,7 @@
         Me gusta enseñar con ejercicios cortos y ejemplos aplicados. Podemos resolver una duda puntual
         o preparar una ruta de práctica.
     </p>
+    <div class="mentor-review-list" id="mentor-review-list"></div>
     <div class="dialog-section">
         <strong>Próximos horarios</strong>
         <div class="time-options">
@@ -1217,10 +1237,65 @@
         <span>Pregunta previa</span>
         <textarea id="prior-question" rows="3" placeholder="Cuéntale al mentor qué necesitas resolver"></textarea>
     </label>
+    <div class="mentor-safety-actions">
+        <button class="text-button danger" id="block-mentor" type="button"><i data-lucide="user-x" aria-hidden="true"></i> Bloquear usuario</button>
+        <button class="text-button danger" id="report-mentor" type="button"><i data-lucide="flag" aria-hidden="true"></i> Reportar comportamiento</button>
+    </div>
     <div class="dialog-footer">
         <span><strong>30 créditos</strong><small>por 30 minutos</small></span>
         <button class="button button-primary" id="request-mentorship" type="button">Solicitar mentoría</button>
     </div>
+</dialog>
+
+<dialog class="workflow-dialog compact-dialog" id="identity-dialog">
+    <form id="identity-form">
+        <div class="dialog-heading"><div><span class="eyebrow">Confianza</span><h2>Verificar identidad</h2><p>En este prototipo el documento se valida por formato y queda pendiente de revisión.</p></div><button class="icon-button" type="button" data-community-close="identity-dialog" aria-label="Cerrar"><i data-lucide="x" aria-hidden="true"></i></button></div>
+        <label class="account-field" for="identity-document"><span>Documento de identidad</span><input id="identity-document" type="file" accept="image/jpeg,image/png,application/pdf" required></label>
+        <label class="check-control identity-consent"><input id="identity-consent" type="checkbox" required><span>Confirmo que el documento me pertenece y autorizo su revisión simulada.</span></label>
+        <div class="dialog-form-message" id="identity-message" role="alert" hidden></div>
+        <div class="account-dialog-actions"><button class="button button-secondary" type="button" data-community-close="identity-dialog">Cancelar</button><button class="button button-primary" type="submit">Enviar verificación</button></div>
+    </form>
+</dialog>
+
+<dialog class="workflow-dialog" id="safe-place-dialog">
+    <div class="dialog-heading"><div><span class="eyebrow">Encuentros presenciales</span><h2>Lugares seguros</h2><p>Selecciona un espacio público verificado para tus próximas mentorías.</p></div><button class="icon-button" type="button" data-community-close="safe-place-dialog" aria-label="Cerrar"><i data-lucide="x" aria-hidden="true"></i></button></div>
+    <div class="safe-place-list" id="safe-place-list"></div>
+</dialog>
+
+<dialog class="workflow-dialog compact-dialog" id="blocked-dialog">
+    <div class="dialog-heading"><div><span class="eyebrow">Privacidad</span><h2>Usuarios bloqueados</h2><p>Puedes restaurar la interacción en cualquier momento.</p></div><button class="icon-button" type="button" data-community-close="blocked-dialog" aria-label="Cerrar"><i data-lucide="x" aria-hidden="true"></i></button></div>
+    <div class="blocked-user-list" id="blocked-user-list"></div>
+</dialog>
+
+<dialog class="workflow-dialog compact-dialog" id="report-dialog">
+    <form id="report-form">
+        <div class="dialog-heading"><div><span class="eyebrow">Centro de confianza</span><h2 id="report-dialog-title">Reportar incidente</h2><p>El equipo revisará la información y la asociará a tu cuenta.</p></div><button class="icon-button" type="button" data-community-close="report-dialog" aria-label="Cerrar"><i data-lucide="x" aria-hidden="true"></i></button></div>
+        <input id="report-target-user" type="hidden">
+        <label class="account-field" for="report-type"><span>Tipo de reporte</span><select id="report-type" required><option value="">Seleccionar</option><option value="inappropriate_behavior">Comportamiento inapropiado</option><option value="harassment">Acoso o mensajes no deseados</option><option value="identity">Identidad sospechosa</option><option value="meeting_incident">Incidente en encuentro presencial</option><option value="other">Otro</option></select></label>
+        <label class="account-field" for="report-description"><span>Descripción</span><textarea id="report-description" rows="5" maxlength="500" required placeholder="Describe qué ocurrió"></textarea></label>
+        <div class="dialog-form-message" id="report-message" role="alert" hidden></div>
+        <div class="account-dialog-actions"><button class="button button-secondary" type="button" data-community-close="report-dialog">Cancelar</button><button class="button button-primary" type="submit">Enviar reporte</button></div>
+    </form>
+</dialog>
+
+<dialog class="workflow-dialog compact-dialog" id="achievement-dialog">
+    <form id="achievement-form">
+        <div class="dialog-heading"><div><span class="eyebrow">Comunidad</span><h2>Compartir logro</h2><p>Cuenta qué aprendiste o enseñaste para motivar a otros.</p></div><button class="icon-button" type="button" data-community-close="achievement-dialog" aria-label="Cerrar"><i data-lucide="x" aria-hidden="true"></i></button></div>
+        <label class="account-field" for="achievement-title"><span>Título del logro</span><input id="achievement-title" type="text" maxlength="80" required></label>
+        <label class="account-field" for="achievement-message"><span>Mensaje</span><textarea id="achievement-message" rows="4" maxlength="320" required></textarea></label>
+        <div class="dialog-form-message" id="achievement-message-error" role="alert" hidden></div>
+        <div class="account-dialog-actions"><button class="button button-secondary" type="button" data-community-close="achievement-dialog">Cancelar</button><button class="button button-primary" type="submit">Publicar logro</button></div>
+    </form>
+</dialog>
+
+<dialog class="workflow-dialog compact-dialog" id="feedback-dialog">
+    <form id="feedback-form">
+        <div class="dialog-heading"><div><span class="eyebrow">Mejora continua</span><h2 id="feedback-dialog-title">Dar feedback</h2><p>Tu aporte quedará registrado para el equipo del proyecto.</p></div><button class="icon-button" type="button" data-community-close="feedback-dialog" aria-label="Cerrar"><i data-lucide="x" aria-hidden="true"></i></button></div>
+        <input id="feedback-kind" type="hidden" value="feedback">
+        <label class="account-field" for="feedback-text"><span>Mensaje</span><textarea id="feedback-text" rows="5" maxlength="500" required></textarea></label>
+        <div class="dialog-form-message" id="feedback-message" role="alert" hidden></div>
+        <div class="account-dialog-actions"><button class="button button-secondary" type="button" data-community-close="feedback-dialog">Cancelar</button><button class="button button-primary" type="submit">Enviar</button></div>
+    </form>
 </dialog>
 
 <div class="toast" id="app-toast" role="status" aria-live="polite" hidden>
@@ -1233,5 +1308,6 @@
 <script src="./assets/scripts/account.js?v=account-access"></script>
 <script src="./assets/scripts/workflows.js?v=workflow-experience"></script>
 <script src="./assets/scripts/app.js?v=app-prototype"></script>
+<script src="./assets/scripts/community-safety.js?v=community-safety"></script>
 </body>
 </html>
