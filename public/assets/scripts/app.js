@@ -119,17 +119,6 @@ document.addEventListener("keydown", (event) => {
     }
 });
 
-const favoriteButtons = document.querySelectorAll(".favorite-button");
-
-favoriteButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-        const isFavorite = button.classList.toggle("is-favorite");
-        button.setAttribute("aria-pressed", String(isFavorite));
-        button.setAttribute("aria-label", isFavorite ? "Quitar de favoritos" : "Agregar a favoritos");
-        showToast(isFavorite ? "Mentor guardado en favoritos" : "Mentor eliminado de favoritos");
-    });
-});
-
 const mentorCards = [...document.querySelectorAll(".result-mentor")];
 const searchInput = document.querySelector("#mentor-search");
 const modalityFilter = document.querySelector("#modality-filter");
@@ -307,49 +296,6 @@ transactionFilter?.addEventListener("change", () => {
     document.querySelectorAll("[data-transaction]").forEach((transaction) => {
         transaction.hidden = transactionFilter.value !== "all"
             && transaction.dataset.transaction !== transactionFilter.value;
-    });
-});
-
-document.querySelectorAll(".reaction-button").forEach((button) => {
-    button.addEventListener("click", () => {
-        const count = button.querySelector("span");
-        const isActive = button.classList.toggle("is-active");
-        button.setAttribute("aria-pressed", String(isActive));
-
-        if (count) {
-            count.textContent = String(Number(count.textContent) + (isActive ? 1 : -1));
-        }
-    });
-});
-
-document.querySelectorAll(".share-button").forEach((button) => {
-    button.addEventListener("click", () => showToast("Publicación lista para compartir"));
-});
-
-document.querySelector("#share-achievement")?.addEventListener("click", () => {
-    showToast("Editor de logros abierto");
-});
-
-document.querySelector("#copy-invite")?.addEventListener("click", async () => {
-    const inviteLink = "https://skillswap.live/invita/andrea";
-
-    try {
-        await navigator.clipboard.writeText(inviteLink);
-        showToast("Enlace de invitación copiado");
-    } catch {
-        showToast("Invitación: skillswap.live/invita/andrea");
-    }
-});
-
-const safetyMessages = {
-    places: "Mapa de lugares seguros disponible en el prototipo completo",
-    blocked: "No tienes usuarios bloqueados",
-    report: "Formulario de reporte preparado",
-};
-
-document.querySelectorAll("[data-safety-action]").forEach((button) => {
-    button.addEventListener("click", () => {
-        showToast(safetyMessages[button.dataset.safetyAction]);
     });
 });
 
