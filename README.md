@@ -34,6 +34,21 @@ Usuarios con experiencia en distintas áreas que desean enseñar habilidades út
 - Geolocalización para encontrar usuarios cercanos.
 - Enfoque en aprendizaje colaborativo.
 
+## Ejecutar el prototipo funcional
+
+1. Instalar dependencias con `npm install`.
+2. Iniciar la API local con `npm run api`.
+3. Abrir el proyecto con Live Server en `http://localhost:5500`.
+
+Si la API no está activa, la aplicación usa `localStorage` y conserva los flujos en el navegador.
+
+Cuenta de demostración:
+
+- Correo: `andrea@skillswap.live`
+- Contraseña: `demo123`
+
+La matriz completa se encuentra en `docs/user-story-coverage.md`.
+
 ## Tecnologías utilizadas
 
 - HTML5
