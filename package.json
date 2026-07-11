@@ -1,10 +1,15 @@
 {
   "name": "skillswap-live-landing-page",
   "version": "1.0.0",
-  "description": "",
+  "description": "Prototipo funcional de SkillSwap Live basado en las historias de usuario del proyecto.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "api": "json-server db.json --port 3000",
+    "validate:data": "node -e \"JSON.parse(require('fs').readFileSync('db.json','utf8')); console.log('db.json valid')\"",
+    "test": "npm run validate:data && node --check public/assets/scripts/store.js && node --check public/assets/scripts/app.js && node --check public/assets/scripts/main.js"
   },
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "json-server": "^1.0.0-beta.15"
+  }
 }
